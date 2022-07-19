@@ -9,10 +9,6 @@
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
-
-    {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
-    {% endblock %}
 </head>
 <body>
 {{ include('_components/_sidenav.html.twig') }}
@@ -20,5 +16,8 @@
     <img src="{{ asset("build/images/nkultra.png") }}" id="logo" alt="NK Ultra logo"/>
 </a>
 {% block body %}{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
 </body>
 </html>

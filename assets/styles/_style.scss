@@ -36,6 +36,32 @@ a {
   // TODO: add shadow?
 }
 
+.main-title-container {
+  height: 10vh;
+  gap: 2vh;
+}
+
+.main-title,
+.main-title-2 {
+  color: rgb(255, 255, 255);
+  font-family: "Lazer84";
+  font-size: 36pt;
+  word-spacing: 20px;
+  text-shadow: 0 0 15px #fff, 0 0 20px #ff00f9, 0 0 30px #ff00f9,
+  0 0 40px #ff00f9, 0 0 55px #ff00f9, 0 0 75px #ff00f9;
+}
+
+.main-title-2 {
+  text-shadow: 0 0 15px #fff, 0 0 20px #ff5e00, 0 0 30px #ff5e00,
+  0 0 40px #ff5e00, 0 0 55px #ff5e00, 0 0 75px #ff5e00;
+}
+
+@media screen and (max-width: 768px) {
+  .main-title {
+    font-size: 30pt;
+  }
+}
+
 //////////////////// HOME PAGE
 .link-container {
   text-decoration: none;

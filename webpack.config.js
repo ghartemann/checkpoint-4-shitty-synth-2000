@@ -33,7 +33,7 @@ Encore
         // to: 'images/[path][name].[ext]',
 
         // if versioning is enabled, add the file hash too
-        to: 'sounds/[path][name].[hash:8].[ext]',
+        to: 'sounds/[name].[ext]',
 
         // only copy files matching this pattern
         // pattern: /\.(png|jpg|jpeg)$/
