@@ -16,7 +16,7 @@ class Note
     #[ORM\Column(length: 5)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 5)]
+    #[ORM\Column(length: 10)]
     private ?string $translation = null;
 
     #[ORM\Column]
