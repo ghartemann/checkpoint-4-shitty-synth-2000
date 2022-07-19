@@ -1,0 +1,43 @@
+<div
+        class="modal fade"
+        id="notesModal"
+        tabindex="-1"
+        aria-labelledby="notesModalLabel"
+        aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="notesModalLabel">Notes info</h5>
+                <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Note</th>
+                        <th scope="col">Translation (FR)</th>
+                        <th scope="col">Frequency (Hz)</th>
+                        <th scope="col">Key</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for note in notes %}
+                        <tr>
+                            <td id="note-table-1-name">{{ note.name }}</td>
+                            <td>{{ note.translation }}</td>
+                            <td id="note-table-1-frequency">{{ note.frequency }} Hz</td>
+                            <td id="note-table-1-key">{{ note.letter|upper }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
