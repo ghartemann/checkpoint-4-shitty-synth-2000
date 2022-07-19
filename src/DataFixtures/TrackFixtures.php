@@ -42,6 +42,8 @@ class TrackFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager): void
     {
+        $i = 0;
+
         foreach (self::TRACKS as $trackName) {
             $note = new Track();
             $note
@@ -50,9 +52,10 @@ class TrackFixtures extends Fixture implements DependentFixtureInterface
                 ->setArtist($trackName['artist'])
                 ->setPicture($trackName['picture'])
                 ->setDifficulty($trackName['difficulty'])
-                ->setCreator($this->getReference('user_' . rand(0, 1)));
-
+                ->setCreator($this->getReference('user_' . rand(0, 1)))
+                ->addFavouriter($this->getReference('user_' . rand(0, 1)));
             $manager->persist($note);
+            $i++;
         }
         $manager->flush();
     }

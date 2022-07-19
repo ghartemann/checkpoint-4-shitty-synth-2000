@@ -34,7 +34,7 @@ class Track
     #[ORM\JoinColumn(nullable: false)]
     private ?User $creator = null;
 
-    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'favorites')]
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'favorites', cascade: ['persist'])]
     private Collection $favouriters;
 
     public function __construct()
