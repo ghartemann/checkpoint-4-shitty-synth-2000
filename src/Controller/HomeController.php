@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\NoteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,8 +11,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(): Response
+    public function index(NoteRepository $noteRepository): Response
     {
-        return $this->render('home/index.html.twig');
+        $notes = $noteRepository->findAll();
+
+        return $this->render('home/index.html.twig', ['notes' => $notes]);
     }
 }

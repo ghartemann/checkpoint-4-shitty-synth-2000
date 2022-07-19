@@ -6,6 +6,11 @@ $primary: #B1367E;
   src: url("../fonts/Lazer84.ttf");
 }
 
+.text-green {
+  color: #00ff04;
+  text-shadow: 0 0 15px #fff, 0 0 20px #00ff04, 0 0 30px #00ff0483;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -51,6 +56,179 @@ a {
 
 .index-container {
   min-height: 65vh;
+}
+
+//////////////////// SYNTHESIZER
+.keyboard-container {
+  position: relative;
+  height: 90vh;
+}
+
+#on-button {
+  position: absolute;
+  background-color: rgb(59, 59, 59);
+  color: white;
+  border: solid 2px white;
+  padding: 2px;
+  top: 9.2vh;
+  float: left;
+  width: 9.9vh;
+  height: 3.4vh;
+  transform: translateX(-490%);
+  font-size: 1.5vh;
+}
+
+.button-glowing {
+  animation: glowing 1300ms infinite;
+}
+
+@keyframes glowing {
+  0% {
+    background-color: rgb(112, 112, 112);
+  }
+  50% {
+    background-color: rgb(59, 59, 59);
+  }
+  100% {
+    background-color: rgb(112, 112, 112);
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  #on-button {
+    top: 16.8vh;
+    transform: translateX(-565%);
+    width: 6vh;
+    height: 12vh;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #on-button {
+    transform: translateX(-365%);
+  }
+}
+
+#keyboard-pic,
+#keyboard-pic-mobile {
+  filter: drop-shadow(0 0 2rem rgb(0, 0, 0));
+  overflow: hidden;
+  object-fit: cover;
+  height: auto;
+}
+
+#screen {
+  position: absolute;
+  top: 18.5%;
+  float: left;
+  transform: translateX(-11.8%);
+  width: 48.9vh;
+  height: 12vh;
+  background-color: rgb(28, 28, 28);
+  border: solid #332829 1vh;
+  padding: 5px;
+  padding-top: 2px;
+  overflow: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -1px 0 0 #0a0606, 0 -1px 0 #0a0606, 1px 0 0 #0a0606,
+  0 1px 0 #504c4d, inset 2px 2px 2px #332829d1, inset -2px -2px 2px #332829;
+}
+
+.screenBg {
+  background-image: linear-gradient(
+                  to right top,
+                  #252e23,
+                  #2d4328,
+                  #34592b,
+                  #3b702d,
+                  #42872e
+  );
+}
+
+@media screen and (max-width: 768px) {
+  #screen {
+    width: 46vh;
+    border-right: none;
+    transform: translateX(10%);
+  }
+}
+
+@media screen and (max-width: 415px) {
+  #screen {
+    width: 93vw;
+    transform: translateX(7%);
+  }
+}
+
+#screen-title {
+  color: #ffffff;
+  font-family: "Lazer84";
+  font-size: 4vh;
+  word-spacing: 5px;
+  text-shadow: 0 0 15px #fff, 0 0 20px #00ff04, 0 0 30px #00ff04,
+  0 0 40px #00ff04, 0 0 55px #00ff04, 0 0 75px #00ff04;
+}
+
+#screen-separator {
+  border: 1px solid #00ff04;
+}
+
+.notes-text,
+.notes-keys,
+#screen-options,
+#screen-options a,
+.sidenav > a {
+  font-size: 1.5vh;
+  color: rgb(201, 255, 121);
+  font-family: "Courier New", Courier, monospace;
+  text-decoration: none;
+  text-shadow: 0 0 15px #fff, 0 0 20px #00ff04, 0 0 30px #00ff04,
+  0 0 40px #00ff04, 0 0 55px #00ff04, 0 0 75px #00ff04;
+}
+
+.key-buttons {
+  position: absolute;
+  top: 58vh;
+  transform: translateX(-24.4%);
+  float: left;
+}
+
+.key-button {
+  height: 14vh;
+  width: 5.6vh;
+  border: none;
+  background-color: rgba(255, 0, 0, 0);
+}
+
+.sharp {
+  position: absolute;
+  top: -15vh;
+  transform: translateX(-50%);
+}
+
+@media screen and (max-width: 768px) {
+  .key-buttons {
+    transform: translateX(0.5%);
+  }
+
+  .sharp {
+    top: -130px;
+    transform: translateX(-50%);
+  }
+
+  .key-button {
+    border: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #keyboard-pic {
+    width: 600px;
+    height: 350px;
+  }
 }
 
 
