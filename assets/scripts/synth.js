@@ -42,7 +42,7 @@ function createDataArray(data) {
     let dataArray = [];
 
     for (let i = 1; i <= 13; i++) {
-        if (data == "key") {
+        if (data === "key") {
             dataArray.push(
                 document
                     .getElementById("note-table-" + i + "-" + data)
@@ -78,7 +78,7 @@ function createKey(note, key) {
 function createKeyboard() {
     let keyboard = document.getElementById("keyboard");
 
-    for (i = 0; i <= noteFreq.length; i++) {
+    for (let i = 0; i <= noteFreq.length; i++) {
         keyboard.appendChild(createKey(noteFreq[i], noteKey[i]));
     }
 
@@ -290,6 +290,7 @@ const wait = (cb, time) => {
     });
 };
 
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////// OTHER FUNCTIONS
 
@@ -304,5 +305,52 @@ statusButton.addEventListener("click", function () {
         statusButton.classList.remove("button-glowing");
     } else {
         window.location.reload();
+    }
+});
+
+// clearing screen function
+clearScreen.addEventListener("click", function () {
+    textNotes.innerHTML = "";
+    textKeys.innerHTML = "";
+    saveForm.value = "";
+    saveFormKeys.value = "";
+});
+
+// choosing waveform
+waveformPicker.addEventListener("click", function () {
+    let waveform = waveformPicker.innerHTML;
+
+    switch (waveform) {
+        case "WAVEFORM: SINE":
+            waveformPicker.innerHTML = "WAVEFORM: SAWTOOTH";
+            type = "sawtooth";
+            break;
+        case "WAVEFORM: SAWTOOTH":
+            waveformPicker.innerHTML = "WAVEFORM: TRIANGLE";
+            type = "triangle";
+            break;
+        case "WAVEFORM: TRIANGLE":
+            waveformPicker.innerHTML = "WAVEFORM: SQUARE";
+            type = "square";
+            break;
+        case "WAVEFORM: SQUARE":
+            waveformPicker.innerHTML = "WAVEFORM: SINE";
+            type = "sine";
+            break;
+    }
+});
+
+// choosing if displaying notes or keyboard keys
+displayTypeSelector.addEventListener("click", function () {
+    let displayType = displayTypeSelector.innerHTML;
+
+    if (displayType === "NOTES") {
+        displayTypeSelector.innerHTML = "KEYS";
+        textNotes.classList.add("d-none");
+        textKeys.classList.remove("d-none");
+    } else {
+        displayTypeSelector.innerHTML = "NOTES";
+        textNotes.classList.remove("d-none");
+        textKeys.classList.add("d-none");
     }
 });

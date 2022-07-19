@@ -1,0 +1,34 @@
+<div
+        class="modal fade"
+        id="saveModal"
+        tabindex="-1"
+        aria-labelledby="saveModalLabel"
+        aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="saveModalLabel">Save track</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="saveFormControlInput1" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="saveFormControlInput1"
+                               placeholder="A title for your track"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="saveFormControlTextarea1" class="form-label">Notes</label>
+                        <textarea class="form-control" id="saveFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="saveFormControlTextarea2" class="form-label">Keys</label>
+                        <textarea class="form-control" id="saveFormControlTextarea2" rows="3"></textarea>
+                    </div>
+                    <button class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
