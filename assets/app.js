@@ -7,9 +7,10 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
-import 'bootstrap';
 import 'animate.css';
+import 'bootstrap';
 import './scripts/synth.js'
+import './scripts/sidenav'
 
 // start the Stimulus application
 import './bootstrap';

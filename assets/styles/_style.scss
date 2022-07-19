@@ -1,3 +1,6 @@
+/* ---------- REDEFINING BOOTSTRAP COLOURS ---------- */
+$primary: #B1367E;
+
 @font-face {
   font-family: "Lazer84";
   src: url("../fonts/Lazer84.ttf");
@@ -48,4 +51,81 @@ a {
 
 .index-container {
   min-height: 65vh;
+}
+
+
+/* SIDENAV from https://www.codeur.com/tuto/css/menu-burger-html-css/#:~:text=Cr%C3%A9er%20un%20burger%20menu%20en,page%2C%20de%20haut%20en%20bas.*/
+/* Sidenav menu */
+
+#openBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: -250px;
+  padding-top: 60px;
+  transition: right 0.5s ease;
+  box-shadow: var(--box-shadow);
+}
+
+/* Sidenav menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: rgb(201, 255, 121);
+  font-family: "Courier New", Courier, monospace;
+  text-shadow: 0 0 15px #fff, 0 0 20px #00ff04;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: rgb(255, 255, 255);
+  text-shadow: 0 0 15px #fff, 0 0 20px #00ff04, 0 0 30px #00ff04,
+  0 0 40px #00ff04, 0 0 55px #00ff04, 0 0 75px #00ff04;
+}
+
+.sidenav p {
+  display: block;
+  position: absolute;
+  color: white;
+  font-size: 20px;
+  padding: 8px 8px 8px 32px;
+  bottom: 10px;
+}
+
+.sidenav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Active class */
+.sidenav.active {
+  right: 0;
+}
+
+/* Close btn */
+.sidenav .close {
+  position: absolute;
+  top: 0;
+  font-size: 36px;
+}
+
+/* Icône burger */
+.burger-icon span {
+  display: block;
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+  border-radius: 5px;
 }
