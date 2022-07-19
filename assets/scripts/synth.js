@@ -1,6 +1,9 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////// VALUES INITIALIZATION
 
+// url, for loading images (this should NOT work like this)
+const url = "http://localhost:8080";
+
 // initializing WebAudio API
 const audioContext = new AudioContext({
     latencyHint: "interactive",
@@ -24,10 +27,11 @@ const displayTypeSelector = document.getElementById("display-type");
 const screenSeparator = document.getElementById("screen-separator");
 const textNotes = document.getElementById("text-notes");
 const textKeys = document.getElementById("text-keys");
+const saveForm = document.getElementById("saveFormControlTextarea1");
+const saveFormKeys = document.getElementById("saveFormControlTextarea2");
 
 const keyboardPic = document.getElementById("keyboard-pic");
 const keyboardPicMobile = document.getElementById("keyboard-pic-mobile");
-
 
 // creating arrays containing notes, frequencies and keys
 const noteList = createDataArray("name");
@@ -64,6 +68,9 @@ function createKey(note, key) {
     keyElement.dataset["note"] = note;
     keyElement.dataset["key"] = key;
 
+    keyElement.addEventListener("keydown", notePressed, false);
+    keyElement.addEventListener("keyup", noteReleased, false);
+
     return keyElement;
 }
 
@@ -81,6 +88,207 @@ function createKeyboard() {
 
 createKeyboard();
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////// SOUND PLAY & STOP
+
+// preventing notes from being fired up multiples times when keeping key pressed
+let keydown = false;
+
+function playNote(freq) {
+    let osc = audioContext.createOscillator();
+
+    osc.type = type;
+    osc.frequency.value = freq;
+
+    mainGainNode.gain.value = 1;
+
+    osc.start();
+    osc.connect(mainGainNode);
+
+    return osc;
+}
+
+// things to do when a key is pressed
+function notePressed(event) {
+    let dataset = event.target.dataset;
+
+    if (!dataset["pressed"]) {
+        oscillators[dataset["note"]] = playNote(dataset["frequency"]);
+        dataset["pressed"] = "yes";
+    }
+}
+
+// things to do when a key is released
+function noteReleased(event) {
+    let dataset = event.target.dataset;
+
+    if (dataset && dataset["pressed"]) {
+        oscillators[dataset["note"]].stop();
+        delete oscillators[dataset["note"]];
+        delete dataset["pressed"];
+    }
+}
+
+// displaying input and note in console (why not?)
+function consoleKeyNote(note, key) {
+    console.log(note + " (" + key.toUpperCase() + " pressed)");
+}
+
+// this does some things (obviously)
+function thingsThatHappen(event, noteIndex) {
+    if (!screenTitle.classList.contains("d-none")) {
+        screenTitle.classList.add("d-none");
+        screen.style.display = "initial";
+        screenOptions.classList.remove("d-none");
+        screenSeparator.classList.remove("d-none");
+    }
+
+    oscillators["note"] = playNote(noteFreq[noteIndex]);
+    consoleKeyNote(noteList[noteIndex], event.key);
+
+    // display notes and keys on screen and save form
+    textNotes.textContent += noteList[noteIndex] + " ";
+    textKeys.textContent += noteKey[noteIndex].toUpperCase() + " ";
+    saveForm.value += noteList[noteIndex] + " ";
+    saveFormKeys.value += noteKey[noteIndex].toUpperCase() + " ";
+}
+
+// playing sound when key is pressed
+window.addEventListener(
+    "keydown",
+    function (event) {
+        if (!keydown && synthStatus == "on") {
+            keydown = true;
+
+            if (event.defaultPrevented) {
+                return;
+            }
+
+            switch (event.key) {
+                case "q":
+                    keyboardPic.src = url + "/build/images/synth/_d_c4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_c4.png";
+                    thingsThatHappen(event, 0);
+                    break;
+                case "z":
+                    keyboardPic.src = url + "/build/images/synth/_d_cs4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_cs4.png";
+                    thingsThatHappen(event, 1);
+                    break;
+                case "s":
+                    keyboardPic.src = url + "/build/images/synth/_d_d4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_d4.png";
+                    thingsThatHappen(event, 2);
+                    break;
+                case "e":
+                    keyboardPic.src = url + "/build/images/synth/_d_ds4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_ds4.png";
+                    thingsThatHappen(event, 3);
+                    break;
+                case "d":
+                    keyboardPic.src = url + "/build/images/synth/_d_e4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_e4.png";
+                    thingsThatHappen(event, 4);
+                    break;
+                case "f":
+                    keyboardPic.src = url + "/build/images/synth/_d_f4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_f4.png";
+                    thingsThatHappen(event, 5);
+                    break;
+                case "t":
+                    keyboardPic.src = url + "/build/images/synth/_d_fs4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_fs4.png";
+                    thingsThatHappen(event, 6);
+                    break;
+                case "g":
+                    keyboardPic.src = url + "/build/images/synth/_d_g4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_g4.png";
+                    thingsThatHappen(event, 7);
+                    break;
+                case "y":
+                    keyboardPic.src = url + "/build/images/synth/_d_gs4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_gs4.png";
+                    thingsThatHappen(event, 8);
+                    break;
+                case "h":
+                    keyboardPic.src = url + "/build/images/synth/_d_a4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_a4.png";
+                    thingsThatHappen(event, 9);
+                    break;
+                case "u":
+                    keyboardPic.src = url + "/build/images/synth/_d_as4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_as4.png";
+                    thingsThatHappen(event, 10);
+                    break;
+                case "j":
+                    keyboardPic.src = url + "/build/images/synth/_d_b4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_b4.png";
+                    thingsThatHappen(event, 11);
+                    break;
+                case "k":
+                    keyboardPic.src = url + "/build/images/synth/_d_c5.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_c5.png";
+                    thingsThatHappen(event, 12);
+                    break;
+                default:
+                    return;
+            }
+        }
+        event.preventDefault();
+    },
+    true
+);
+
+// creating events for buttons (click and touch)
+for (let j = 0; j < noteList.length; j++) {
+    let button = document.getElementById("button" + j);
+
+    // set up touch events
+    button.addEventListener("touchstart", function () {
+        button.dispatchEvent(new KeyboardEvent("keydown", {key: noteKey[j]}));
+    });
+    button.addEventListener("touchend", stopSound, true);
+
+    // set up click events
+    button.addEventListener("mousedown", function () {
+        button.dispatchEvent(new KeyboardEvent("keydown", {key: noteKey[j]}));
+    });
+
+    button.addEventListener("mouseup", stopSound, true);
+}
+
+window.addEventListener("keyup", stopSound, true);
+
+// function to stop sound, called in multiple places
+function stopSound(event) {
+    keydown = false;
+
+    // not sure what this does
+    if (event.defaultPrevented) {
+        return;
+    }
+
+    // stop sound from playing
+    if (oscillators["note"]) {
+        oscillators["note"].stop();
+    }
+
+    // put back default picture
+    keyboardPic.src = url + "/build/images/synth/_d_default.png";
+    keyboardPicMobile.src = url + "/build/images/synth/_m_default.png";
+
+    event.preventDefault();
+}
+
+const wait = (cb, time) => {
+    return new Promise((res) => {
+        setTimeout(() => {
+            cb();
+            res();
+        }, time);
+    });
+};
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////// OTHER FUNCTIONS
