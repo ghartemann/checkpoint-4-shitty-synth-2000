@@ -27,7 +27,7 @@ class User implements \Symfony\Component\Security\Core\User\PasswordAuthenticate
     #[ORM\OneToMany(mappedBy: 'creator', targetEntity: Track::class)]
     private Collection $tracks;
 
-    #[ORM\ManyToMany(targetEntity: Track::class, mappedBy: 'favouriters')]
+    #[ORM\ManyToMany(targetEntity: Track::class, mappedBy: 'favouriters', cascade: ['persist'])]
     private Collection $favorites;
 
     public function __construct()
