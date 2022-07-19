@@ -1,0 +1,31 @@
+<div id="mySidenav" class="sidenav bg-dark">
+    <a id="closeBtn" href="#" class="close">×</a>
+    <ul>
+        <li>
+            <a href="" data-bs-toggle="modal" data-bs-target="#infoModal">Info</a>
+        </li>
+        <li class="mb-5">
+            <a href="" data-bs-toggle="modal" data-bs-target="#notesModal">Notes info</a>
+        </li>
+        <li class="mb-5">
+            <a href="https://github.com/ghartemann" target="_blank">Github</a>
+        </li>
+        <li>
+            <a href="https://ghartemann.fr/" target="_blank">ghartemann.fr</a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/in/ghartemann/" target="_blank">LinkedIn</a>
+        </li>
+    </ul>
+</div>
+
+<a href="#" id="openBtn">
+      <span class="burger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+</a>
+
+{{ include('_components/_sidenav_readme.html.twig') }}
+{{ include('_components/_sidenav_notes_info.html.twig') }}
