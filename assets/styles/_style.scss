@@ -217,8 +217,12 @@ body {
 
 @media screen and (max-width: 415px) {
   #screen {
-    width: 93vw;
-    transform: translateX(7%);
+    width: 90vw;
+    transform: translateX(6%);
+  }
+
+  #screen-options a {
+    font-size: 4em;
   }
 }
 
@@ -246,6 +250,12 @@ body {
   text-decoration: none;
   text-shadow: 0 0 15px #fff, 0 0 20px #00ff04, 0 0 30px #00ff04,
   0 0 40px #00ff04, 0 0 55px #00ff04, 0 0 75px #00ff04;
+}
+
+@media screen and (max-width: 415px) {
+  #screen-options a {
+    font-size: 0.9em;
+  }
 }
 
 #screen-options a {
