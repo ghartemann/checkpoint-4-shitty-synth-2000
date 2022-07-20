@@ -1,15 +1,20 @@
-/* ---------- REDEFINING BOOTSTRAP COLOURS ---------- */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////// REDEFINING BOOTSTRAP THINGS
 $primary: #ff3cef;
+$secondary: #4bbd00;
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////// FONTS
 
 @font-face {
   font-family: "Lazer84";
   src: url("../fonts/Lazer84.ttf");
 }
 
-.text-green {
-  color: #00ff04;
-  text-shadow: 0 0 15px #fff, 0 0 20px #00ff04, 0 0 30px #00ff0483;
-}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////// GLOBAL
 
 * {
   box-sizing: border-box;
@@ -26,7 +31,6 @@ a {
   text-decoration: none;
 }
 
-//////////////////// GLOBAL
 #logo {
   width: 120px;
   height: 120px;
@@ -37,7 +41,7 @@ a {
 }
 
 .main-title-container {
-  height: 10vh;
+  height: 15vh;
   gap: 2vh;
 }
 
@@ -62,22 +66,24 @@ a {
   }
 }
 
-//caution: is actually pink (???)
-.text-green {
-  font-family: "Courier New", Courier, monospace;
-  color: #eb5cff !important;
-  text-shadow: 0 0 15px #fff, 0 0 20px #ed00ff, 0 0 30px rgba(191, 0, 255, 0.51);
-}
-
 .text-white {
   color: #FFFFFF;
+}
+
+.text-green {
+  font-family: "Courier New", Courier, monospace;
+  color: #00ff04;
+  text-shadow: 0 0 15px #fff, 0 0 20px #00ff04, 0 0 30px #00ff0483;
 }
 
 .pink-shadow {
   box-shadow: 0 0 20px deeppink;
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// HOME PAGE
+
 .link-container {
   text-decoration: none;
 }
@@ -99,7 +105,10 @@ a {
   min-height: 65vh;
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// SYNTHESIZER
+
 .keyboard-container {
   position: relative;
   height: 90vh;
@@ -168,8 +177,7 @@ a {
   height: 12vh;
   background-color: rgb(28, 28, 28);
   border: solid #332829 1vh;
-  padding: 5px;
-  padding-top: 2px;
+  padding: 2px 5px 5px;
   overflow: scroll;
   display: flex;
   justify-content: center;
@@ -273,6 +281,17 @@ a {
 }
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////// TRACKS PAGE
+
+.card-img-top {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  /* max-height: 300px; */
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// LOGIN PAGE
 
 .login-container {
@@ -281,16 +300,18 @@ a {
 
 #blur-container {
   height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .bg-blur {
   backdrop-filter: blur(5px);
 }
 
-/* SIDENAV from https://www.codeur.com/tuto/css/menu-burger-html-css/#:~:text=Cr%C3%A9er%20un%20burger%20menu%20en,page%2C%20de%20haut%20en%20bas.*/
-/* Sidenav menu */
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////// SIDENAV
+
+/* Sidenav menu */
 #openBtn {
   position: absolute;
   top: 10px;
