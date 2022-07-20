@@ -40,6 +40,9 @@ class Track
     #[ORM\Column(length: 255)]
     private ?string $letters = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $youtube = null;
+
     public function __construct()
     {
         $this->favouriters = new ArrayCollection();
@@ -154,6 +157,18 @@ class Track
     public function setLetters(string $letters): self
     {
         $this->letters = $letters;
+
+        return $this;
+    }
+
+    public function getYoutube(): ?string
+    {
+        return $this->youtube;
+    }
+
+    public function setYoutube(?string $youtube): self
+    {
+        $this->youtube = $youtube;
 
         return $this;
     }
