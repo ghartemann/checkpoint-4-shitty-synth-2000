@@ -401,6 +401,7 @@ export default class extends Controller {
 
         function displayTrack() {
             if (loadSelector.value !== "none") {
+                loadButton.children[0].disabled = false;
                 for (const element of tracksToLoad) {
                     if ("track_" + loadSelector.value === element.id) {
                         element.classList.remove("d-none");
@@ -413,6 +414,7 @@ export default class extends Controller {
                     }
                 }
             } else {
+                loadButton.children[0].disabled = true;
                 for (const element of tracksToLoad) {
                     element.classList.add("d-none");
                 }
