@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\TrackRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,10 +11,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class TrackController extends AbstractController
 {
     #[Route('/index', name: 'index')]
-    public function index(): Response
+    public function index(TrackRepository $trackRepository): Response
     {
-        return $this->render('track/index.html.twig', [
-            'controller_name' => 'TrackController',
-        ]);
+        $tracks = $trackRepository->findAll();
+
+        return $this->render('track/index.html.twig', ['tracks' => $tracks,]);
     }
 }

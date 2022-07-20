@@ -1,7 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello TrackController!{% endblock %}
+{% block title %}Tracks - {% endblock %}
 
 {% block body %}
-
+    <div class="container mb-5">
+        <div class="row">
+            <div class="main-title-container col-12 d-flex align-items-center justify-content-center">
+                <h1 class="main-title">Tracklist</h1>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for track in tracks %}
+                <div class="col">
+                    <div class="card h-100 bg-dark text-green pink-shadow">
+                        <img src="{{ asset("build/images/tracks/" ~ track.picture) }}" class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ track.title }}{% if track.artist %} - {{ track.artist }}{% endif %}</h5>
+                            <p>Difficulty: {{ track.difficulty }}/3</p>
+                            <p class="card-text">{{ track.notes }}</p>
+                            <a href="#" class="btn btn-secondary">Load</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
