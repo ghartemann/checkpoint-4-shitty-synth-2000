@@ -3,7 +3,6 @@
 namespace App\DataFixtures;
 
 use App\Entity\Track;
-use App\Repository\TrackRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -27,16 +26,16 @@ class TrackFixtures extends Fixture implements DependentFixtureInterface
             'artist' => null,
             'picture' => 'lune.jpg',
             'difficulty' => 2,
-            'youtube' => '',
+            'youtube' => 'IYLTc3tGdzc',
         ],
         [
             'title' => 'The Saints Go Marching In',
             'notes' => 'C E F G C E F G C E F G E C E D E E D C C E G G F F E F G E C D C',
             'letters' => 'TODO',
-            'artist' => null,
+            'artist' => "Treme Brass Band",
             'picture' => 'treme.jpeg',
             'difficulty' => 2,
-            'youtube' => '',
+            'youtube' => 'kCKfUgnpN48',
         ],
         [
             'title' => 'Le petit bonhomme en mousse',
@@ -54,7 +53,7 @@ class TrackFixtures extends Fixture implements DependentFixtureInterface
             'artist' => 'Walt Disney',
             'picture' => 'cats.jpg',
             'difficulty' => 2,
-            'youtube' => '',
+            'youtube' => 'tEL-RsUsKlw',
         ],
         [
             'title' => 'Happy Birthday to You',
@@ -63,15 +62,9 @@ class TrackFixtures extends Fixture implements DependentFixtureInterface
             'artist' => null,
             'picture' => 'birthday.jpg',
             'difficulty' => 3,
-            'youtube' => '',
+            'youtube' => '_z-1fTlSDF0',
         ],
     ];
-    private TrackRepository $trackRepository;
-
-    public function __construct(TrackRepository $trackRepository)
-    {
-        $this->trackRepository = $trackRepository;
-    }
 
     public function load(ObjectManager $manager): void
     {

@@ -3,18 +3,26 @@
 {% block title %}Hello AdminController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/guillaumehartemann/Dev/checkpoints/2022-03-php-lyon-checkpoint-4/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/guillaumehartemann/Dev/checkpoints/2022-03-php-lyon-checkpoint-4/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="container h-75 mt-3 mb-5 d-flex flex-column justify-content-center">
+        <div class="row">
+            <div class="main-title-container col-12 d-flex align-items-center justify-content-center">
+                <h1 class="main-title">Admin</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-12 col-md-8 col-lg-6 card bg-primary bg-opacity-25 semitransparent p-5">
+                            <a class="btn btn-danger btn-lg text-blue m-3"
+                               href="{{ path('app_admin_tracks') }}">Tracks</a>
+                            <a class="btn btn-danger btn-lg text-blue m-3"
+                               href="{{ path('app_admin_users') }}">Users</a>
+                            <a class="btn btn-danger btn-lg text-blue m-3" href="{{ path('app_logout') }}">Log out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
