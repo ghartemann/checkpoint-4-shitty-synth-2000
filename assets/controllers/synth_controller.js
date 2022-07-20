@@ -414,6 +414,7 @@ export default class extends Controller {
                     }
                 }
             } else {
+                loadButton.children[0].disabled = true;
                 for (const element of tracksToLoad) {
                     element.classList.add("d-none");
                 }
