@@ -10,11 +10,11 @@ export default class extends Controller {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////// VALUES INITIALIZATION
 
-// url, for loading images (this should NOT work like this)
+        // url, for loading images (this should NOT work like this)
         const url = "http://localhost:8080";
-// const url = "";
+        // const url = "";
 
-// initializing WebAudio API
+        // initializing WebAudio API
         const audioContext = new AudioContext({
             latencyHint: "interactive",
             sampleRate: 48000,
@@ -28,7 +28,7 @@ export default class extends Controller {
         let modalStatus = false;
         let lockScreen = false;
 
-// getting elements from DOM
+        // getting elements from DOM
         const statusButton = document.getElementById("on-button");
         const startup = document.getElementById("audio");
         const screen = document.getElementById("screen");
@@ -52,7 +52,7 @@ export default class extends Controller {
         const keyboardPic = document.getElementById("keyboard-pic");
         const keyboardPicMobile = document.getElementById("keyboard-pic-mobile");
 
-// creating arrays containing notes, frequencies and keys
+        // creating arrays containing notes, frequencies and keys
         const noteList = createDataArray("name");
         const noteFreq = createDataArray("frequency");
         const noteKey = createDataArray("key");
@@ -80,7 +80,7 @@ export default class extends Controller {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////// CREATING KEYBOARD AND KEYS
 
-// creating each key (one sound, one shortcut)
+        // creating each key (one sound, one shortcut)
         function createKey(note, key) {
             let keyElement = document.createElement("div");
 
@@ -93,7 +93,7 @@ export default class extends Controller {
             return keyElement;
         }
 
-// initializing the whole keyboard thing
+        // initializing the whole keyboard thing
         function createKeyboard() {
             let keyboard = document.getElementById("keyboard");
 
@@ -281,7 +281,7 @@ export default class extends Controller {
             }
         }
 
-// creating events for buttons (click and touch)
+        // creating events for buttons (click and touch)
         for (let j = 0; j < noteList.length; j++) {
             let button = document.getElementById("button" + j);
 
@@ -301,7 +301,7 @@ export default class extends Controller {
 
         window.addEventListener("keyup", stopSound, true);
 
-// function to stop sound, called in multiple places
+        // function to stop sound, called in multiple places
         function stopSound(event) {
             keydown = false;
 

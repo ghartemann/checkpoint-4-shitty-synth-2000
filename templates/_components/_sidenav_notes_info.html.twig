@@ -6,7 +6,7 @@
         aria-hidden="true"
 >
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
+        <div class="modal-content bg-primary bg-opacity-50 semitransparent pink-shadow text-white">
             <div class="modal-header">
                 <h5 class="modal-title" id="notesModalLabel">Notes info</h5>
                 <button
@@ -19,14 +19,14 @@
             <div class="modal-body">
                 <table class="table">
                     <thead>
-                    <tr>
+                    <tr class="text-white">
                         <th scope="col">Note</th>
                         <th scope="col">Translation (FR)</th>
                         <th scope="col">Frequency (Hz)</th>
                         <th scope="col">Key</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-white">
                     {% for note in notesService.getNotes() %}
                         <tr>
                             <td id="note-table-{{ loop.index }}-name">{{ note.name }}</td>
