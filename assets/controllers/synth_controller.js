@@ -21,8 +21,10 @@ export default class extends Controller {
         let oscillators = [];
         let mainGainNode = null;
         let type = "sine";
+        // maybe make these two booleans instead? MIGHT BE A GREAT IDEA
         let synthStatus = "off";
         let modalStatus = "off";
+        let lockScreen = false;
 
 // getting elements from DOM
         const statusButton = document.getElementById("on-button");
@@ -39,6 +41,11 @@ export default class extends Controller {
         const saveForm = document.querySelector(".saveFormControlTextarea1");
         const saveFormKeys = document.querySelector(".saveFormControlTextarea2");
         const saveModal = document.getElementById("saveModal");
+        const loadSelector = document.getElementById("load-selector");
+        const tracksToLoad = document.getElementsByClassName("tracks-to-load");
+        const loadButton = document.getElementById("load-button");
+        const saveButton = document.getElementById("save-button");
+        const readOnly = document.getElementById("read-only");
 
         const keyboardPic = document.getElementById("keyboard-pic");
         const keyboardPicMobile = document.getElementById("keyboard-pic-mobile");
@@ -159,10 +166,12 @@ export default class extends Controller {
             consoleKeyNote(noteList[noteIndex], event.key);
 
             // display notes and keys on screen and save form
-            textNotes.textContent += noteList[noteIndex] + " ";
-            textKeys.textContent += noteKey[noteIndex].toUpperCase() + " ";
-            saveForm.value += noteList[noteIndex] + " ";
-            saveFormKeys.value += noteKey[noteIndex].toUpperCase() + " ";
+            if (lockScreen === false) {
+                textNotes.textContent += noteList[noteIndex] + " ";
+                textKeys.textContent += noteKey[noteIndex].toUpperCase() + " ";
+                saveForm.value += noteList[noteIndex] + " ";
+                saveFormKeys.value += noteKey[noteIndex].toUpperCase() + " ";
+            }
         }
 
 // playing sound when key is pressed
@@ -308,8 +317,10 @@ export default class extends Controller {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////// OTHER FUNCTIONS
 
-// on / off button
-        statusButton.addEventListener("click", function () {
+        // on / off button
+        statusButton.addEventListener("click", onOff);
+
+        function onOff() {
             if (synthStatus === "off") {
                 synthStatus = "on";
                 screenTitle.classList.remove("d-none");
@@ -320,17 +331,22 @@ export default class extends Controller {
             } else {
                 window.location.reload();
             }
-        });
+        }
 
-// clearing screen function
-        clearScreen.addEventListener("click", function () {
+        // clearing screen function
+        clearScreen.addEventListener("click", clear);
+
+        function clear() {
             textNotes.innerHTML = "";
             textKeys.innerHTML = "";
             saveForm.value = "";
             saveFormKeys.value = "";
-        });
+            lockScreen = false;
+            saveButton.classList.remove("d-none");
+            readOnly.classList.add("d-none");
+        }
 
-// choosing waveform
+        // choosing waveform
         waveformPicker.addEventListener("click", function () {
             let waveform = waveformPicker.innerHTML;
 
@@ -354,7 +370,7 @@ export default class extends Controller {
             }
         });
 
-// choosing if displaying notes or keyboard keys
+        // choosing if displaying notes or keyboard keys
         displayTypeSelector.addEventListener("click", function () {
             let displayType = displayTypeSelector.innerHTML;
 
@@ -369,7 +385,7 @@ export default class extends Controller {
             }
         });
 
-// checking modal status
+        // checking modal status
         function checkModalStatus() {
             if (saveModal.classList.contains("show")) {
                 modalStatus = "off";
@@ -380,5 +396,38 @@ export default class extends Controller {
             return modalStatus;
         }
 
+        // displaying track according to select
+        loadSelector.addEventListener("change", displayTrack);
+
+        function displayTrack() {
+            if (loadSelector.value !== "none") {
+                for (const element of tracksToLoad) {
+                    if ("track_" + loadSelector.value === element.id) {
+                        element.classList.remove("d-none");
+                        element.children[3].id = "load-notes";
+                        element.children[5].id = "load-keys";
+                    } else {
+                        element.classList.add("d-none");
+                        element.children[3].removeAttribute('id');
+                        element.children[5].removeAttribute('id');
+                    }
+                }
+            } else {
+                for (const element of tracksToLoad) {
+                    element.classList.add("d-none");
+                }
+            }
+        }
+
+        // load track
+        loadButton.addEventListener("click", load);
+
+        function load() {
+            lockScreen = true;
+            saveButton.classList.add("d-none");
+            readOnly.classList.remove("d-none");
+            textNotes.textContent = document.getElementById("load-notes").innerHTML;
+            textKeys.textContent = document.getElementById("load-keys").innerHTML;
+        }
     }
 }

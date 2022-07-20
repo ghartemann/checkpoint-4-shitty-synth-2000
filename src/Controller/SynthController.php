@@ -17,6 +17,8 @@ class SynthController extends AbstractController
     #[Route('', name: 'index')]
     public function index(Request $request, TrackRepository $trackRepository): Response
     {
+        $tracks = $trackRepository->findAll();
+
         /** @var User $user */
         $user = $this->getUser();
         $track = new Track();
@@ -29,6 +31,6 @@ class SynthController extends AbstractController
             return $this->redirectToRoute('app_track_index');
         }
 
-        return $this->renderForm('synth/index.html.twig', ['form' => $form]);
+        return $this->renderForm('synth/index.html.twig', ['form' => $form, 'tracks' => $tracks]);
     }
 }
