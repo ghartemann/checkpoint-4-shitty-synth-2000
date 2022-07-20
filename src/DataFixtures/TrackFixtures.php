@@ -18,6 +18,7 @@ class TrackFixtures extends Fixture implements DependentFixtureInterface
             'artist' => 'Patrick Sébastien',
             'picture' => 'serviettes.jpeg',
             'difficulty' => 3,
+            'youtube' => 'kk2CzGfL7n4',
         ],
         [
             'title' => 'Au clair de la lune',
@@ -26,6 +27,7 @@ class TrackFixtures extends Fixture implements DependentFixtureInterface
             'artist' => null,
             'picture' => 'lune.jpg',
             'difficulty' => 2,
+            'youtube' => '',
         ],
         [
             'title' => 'The Saints Go Marching In',
@@ -34,6 +36,7 @@ class TrackFixtures extends Fixture implements DependentFixtureInterface
             'artist' => null,
             'picture' => 'treme.jpeg',
             'difficulty' => 2,
+            'youtube' => '',
         ],
         [
             'title' => 'Le petit bonhomme en mousse',
@@ -51,6 +54,7 @@ class TrackFixtures extends Fixture implements DependentFixtureInterface
             'artist' => 'Walt Disney',
             'picture' => 'cats.jpg',
             'difficulty' => 2,
+            'youtube' => '',
         ],
         [
             'title' => 'Happy Birthday to You',
@@ -59,6 +63,7 @@ class TrackFixtures extends Fixture implements DependentFixtureInterface
             'artist' => null,
             'picture' => 'birthday.jpg',
             'difficulty' => 3,
+            'youtube' => '',
         ],
     ];
     private TrackRepository $trackRepository;
@@ -81,7 +86,8 @@ class TrackFixtures extends Fixture implements DependentFixtureInterface
                 ->setArtist($trackName['artist'])
                 ->setPicture($trackName['picture'])
                 ->setDifficulty($trackName['difficulty'])
-                ->setCreator($this->getReference('user_' . rand(0, 1)))
+                ->setYoutube($trackName['youtube'])
+                ->setCreator($this->getReference('user_' . rand(1, 11)))
                 ->addFavouriter($this->getReference('user_' . rand(0, 1)));
             $manager->persist($note);
             $i++;

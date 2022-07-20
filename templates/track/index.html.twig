@@ -12,14 +12,18 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for track in tracks %}
                 <div class="col">
-                    <div class="card h-100 bg-dark text-green pink-shadow">
-                        <img src="{{ asset("build/images/tracks/" ~ track.picture) }}" class="card-img-top" alt="..."/>
-                        <div class="card-body">
-                            <h4 class="card-title">{{ track.title }}{% if track.artist %} - {{ track.artist }}{% endif %}</h4>
-                            <p>Difficulty: {{ track.difficulty }}/3</p>
-                            <a href="#" class="btn btn-secondary">Load</a>
+                    <a href="{{ path("app_track_show", {'id': track.id}) }}">
+                        <div class="card h-100 bg-primary bg-opacity-25 semitransparent pink-shadow text-white">
+                            <img src="{{ asset("build/images/tracks/" ~ track.picture) }}"
+                                 class="card-img-top img-ratio"
+                                 alt="..."/>
+                            <div class="card-body">
+                                <h4 class="card-title">{{ track.title }}{% if track.artist %} - {{ track.artist }}{% endif %}</h4>
+                                <p>Difficulty: {{ track.difficulty }}/3</p>
+
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             {% endfor %}
         </div>

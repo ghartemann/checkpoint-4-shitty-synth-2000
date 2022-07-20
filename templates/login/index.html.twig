@@ -8,8 +8,8 @@
          class="container login-container d-flex align-items-center animate__animated animate__zoomIn">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-6">
-                <div class="card bg-dark pink-shadow">
-                    <img src="{{ asset("build/images/login.jpeg") }}" class="card-img-top" alt="...">
+                <div class="card bg-primary bg-opacity-50 semitransparent pink-shadow text-white">
+                    <img src="{{ asset("build/images/login.jpeg") }}" class="card-img-top" alt="The city">
                     <div class="card-body">
 
                         {% if error %}
@@ -20,19 +20,20 @@
                             <div class="row d-flex justify-content-center">
                                 <div class="col-10">
                                     <form action="{{ path('app_login') }}" method="post">
-                                        <label for="username" class="form-label text-green">Email:</label>
-                                        <input class="form-control bg-dark text-green" type="text" id="username"
+                                        <label for="username" class="form-label">Email:</label>
+                                        <input class="form-control" type="text" id="username"
                                                name="_username"/>
 
-                                        <label for="password" class="form-label text-green mt-3">Password:</label>
-                                        <input class="form-control bg-dark text-green" type="password" id="password"
+                                        <label for="password" class="form-label mt-3">Password:</label>
+                                        <input class="form-control" type="password" id="password"
                                                name="_password"/>
 
                                         <input type="hidden" name="_csrf_token"
                                                value="{{ csrf_token('authenticate') }}">
 
                                         <div class="d-flex justify-content-center mt-5">
-                                            <button class="btn btn-lg btn-primary text-white" type="submit">Login
+                                            <button class="login-button bg-transparent main-title"
+                                                    type="submit">Login
                                             </button>
                                         </div>
                                     </form>
