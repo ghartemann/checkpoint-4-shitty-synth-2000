@@ -42,6 +42,7 @@ class TrackFixtures extends Fixture implements DependentFixtureInterface
             'artist' => "Patrick Sébastien",
             'picture' => 'petit-bonhomme.jpeg',
             'difficulty' => 3,
+            'youtube' => "fAmvQ8C2SUo",
         ],
         [
             'title' => 'The Aristocats',

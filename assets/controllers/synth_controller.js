@@ -4,6 +4,8 @@ import {Controller} from '@hotwired/stimulus';
 export default class extends Controller {
     connect() {
 
+// TODO: all this code used to be in scripts/synth.js, but I couldn't import it here
+// so this will have to do unfortunately
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////// VALUES INITIALIZATION
@@ -22,8 +24,8 @@ export default class extends Controller {
         let mainGainNode = null;
         let type = "sine";
         // maybe make these two booleans instead? MIGHT BE A GREAT IDEA
-        let synthStatus = "off";
-        let modalStatus = "off";
+        let synthStatus = false;
+        let modalStatus = false;
         let lockScreen = false;
 
 // getting elements from DOM
@@ -109,7 +111,7 @@ export default class extends Controller {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////// SOUND PLAY & STOP
 
-// preventing notes from being fired up multiples times when keeping key pressed
+        // preventing notes from being fired up multiples times when keeping key pressed
         let keydown = false;
 
         function playNote(freq) {
@@ -126,7 +128,7 @@ export default class extends Controller {
             return osc;
         }
 
-// things to do when a key is pressed
+        // things to do when a key is pressed
         function notePressed(event) {
             let dataset = event.target.dataset;
 
@@ -136,7 +138,7 @@ export default class extends Controller {
             }
         }
 
-// things to do when a key is released
+        // things to do when a key is released
         function noteReleased(event) {
             let dataset = event.target.dataset;
 
@@ -147,25 +149,8 @@ export default class extends Controller {
             }
         }
 
-// displaying input and note in console (why not?)
-        function consoleKeyNote(note, key) {
-            console.log(note + " (" + key.toUpperCase() + " pressed)");
-        }
-
-// this does some things (obviously)
-        function thingsThatHappen(event, noteIndex) {
-            // hiding stuff when synth starts
-            if (!screenTitle.classList.contains("d-none")) {
-                screenTitle.classList.add("d-none");
-                screen.style.display = "initial";
-                screenOptions.classList.remove("d-none");
-                screenSeparator.classList.remove("d-none");
-            }
-
-            oscillators["note"] = playNote(noteFreq[noteIndex]);
-            consoleKeyNote(noteList[noteIndex], event.key);
-
-            // display notes and keys on screen and save form
+        // display notes and keys on screen and save form
+        function displayNotes(noteIndex) {
             if (lockScreen === false) {
                 textNotes.textContent += noteList[noteIndex] + " ";
                 textKeys.textContent += noteKey[noteIndex].toUpperCase() + " ";
@@ -174,94 +159,127 @@ export default class extends Controller {
             }
         }
 
-// playing sound when key is pressed
-        window.addEventListener(
-            "keydown",
-            function (event) {
-                modalStatus = checkModalStatus();
+        // hiding stuff when synth starts
+        function initializeScreen() {
+            screenTitle.classList.add("d-none");
+            screen.style.display = "initial";
+            screenOptions.classList.remove("d-none");
+            screenSeparator.classList.remove("d-none");
 
-                if (!keydown && synthStatus === "on" && modalStatus === "on") {
-                    keydown = true;
+        }
 
-                    if (event.defaultPrevented) {
-                        return;
-                    }
+        // playing sound when key is pressed
+        window.addEventListener("keydown", pressKey, true);
 
-                    switch (event.key) {
-                        case "q":
-                            keyboardPic.src = url + "/build/images/synth/_d_c4.png";
-                            keyboardPicMobile.src = url + "/build/images/synth/_m_c4.png";
-                            thingsThatHappen(event, 0);
-                            break;
-                        case "z":
-                            keyboardPic.src = url + "/build/images/synth/_d_cs4.png";
-                            keyboardPicMobile.src = url + "/build/images/synth/_m_cs4.png";
-                            thingsThatHappen(event, 1);
-                            break;
-                        case "s":
-                            keyboardPic.src = url + "/build/images/synth/_d_d4.png";
-                            keyboardPicMobile.src = url + "/build/images/synth/_m_d4.png";
-                            thingsThatHappen(event, 2);
-                            break;
-                        case "e":
-                            keyboardPic.src = url + "/build/images/synth/_d_ds4.png";
-                            keyboardPicMobile.src = url + "/build/images/synth/_m_ds4.png";
-                            thingsThatHappen(event, 3);
-                            break;
-                        case "d":
-                            keyboardPic.src = url + "/build/images/synth/_d_e4.png";
-                            keyboardPicMobile.src = url + "/build/images/synth/_m_e4.png";
-                            thingsThatHappen(event, 4);
-                            break;
-                        case "f":
-                            keyboardPic.src = url + "/build/images/synth/_d_f4.png";
-                            keyboardPicMobile.src = url + "/build/images/synth/_m_f4.png";
-                            thingsThatHappen(event, 5);
-                            break;
-                        case "t":
-                            keyboardPic.src = url + "/build/images/synth/_d_fs4.png";
-                            keyboardPicMobile.src = url + "/build/images/synth/_m_fs4.png";
-                            thingsThatHappen(event, 6);
-                            break;
-                        case "g":
-                            keyboardPic.src = url + "/build/images/synth/_d_g4.png";
-                            keyboardPicMobile.src = url + "/build/images/synth/_m_g4.png";
-                            thingsThatHappen(event, 7);
-                            break;
-                        case "y":
-                            keyboardPic.src = url + "/build/images/synth/_d_gs4.png";
-                            keyboardPicMobile.src = url + "/build/images/synth/_m_gs4.png";
-                            thingsThatHappen(event, 8);
-                            break;
-                        case "h":
-                            keyboardPic.src = url + "/build/images/synth/_d_a4.png";
-                            keyboardPicMobile.src = url + "/build/images/synth/_m_a4.png";
-                            thingsThatHappen(event, 9);
-                            break;
-                        case "u":
-                            keyboardPic.src = url + "/build/images/synth/_d_as4.png";
-                            keyboardPicMobile.src = url + "/build/images/synth/_m_as4.png";
-                            thingsThatHappen(event, 10);
-                            break;
-                        case "j":
-                            keyboardPic.src = url + "/build/images/synth/_d_b4.png";
-                            keyboardPicMobile.src = url + "/build/images/synth/_m_b4.png";
-                            thingsThatHappen(event, 11);
-                            break;
-                        case "k":
-                            keyboardPic.src = url + "/build/images/synth/_d_c5.png";
-                            keyboardPicMobile.src = url + "/build/images/synth/_m_c5.png";
-                            thingsThatHappen(event, 12);
-                            break;
-                        default:
-                            return;
-                    }
-                }
-                // disabled this shit that was disabling the keyboard everywhere
-                // event.preventDefault();
-            },
-            true
-        );
+        function pressKey(event) {
+            // initialize screen
+            if (!screenTitle.classList.contains("d-none")) {
+                initializeScreen();
+            }
+
+            // stop startup audio when a key is pressed
+            startup.pause();
+            startup.currentTime = 0;
+
+            modalStatus = checkModalStatus();
+
+            if (!keydown && synthStatus === true && modalStatus === true) {
+                determineKey(event);
+            }
+        }
+
+        // do various things depending on what key is pressed
+        function determineKey(event) {
+            keydown = true;
+
+            // TODO: is this useful?
+            if (event.defaultPrevented) {
+                return;
+            }
+
+            switch (event.key) {
+                case "q":
+                    keyboardPic.src = url + "/build/images/synth/_d_c4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_c4.png";
+                    oscillators["note"] = playNote(noteFreq[0]);
+                    displayNotes(0);
+                    break;
+                case "z":
+                    keyboardPic.src = url + "/build/images/synth/_d_cs4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_cs4.png";
+                    oscillators["note"] = playNote(noteFreq[1]);
+                    displayNotes(1);
+                    break;
+                case "s":
+                    keyboardPic.src = url + "/build/images/synth/_d_d4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_d4.png";
+                    oscillators["note"] = playNote(noteFreq[2]);
+                    displayNotes(2);
+                    break;
+                case "e":
+                    keyboardPic.src = url + "/build/images/synth/_d_ds4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_ds4.png";
+                    oscillators["note"] = playNote(noteFreq[3]);
+                    displayNotes(3);
+                    break;
+                case "d":
+                    keyboardPic.src = url + "/build/images/synth/_d_e4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_e4.png";
+                    oscillators["note"] = playNote(noteFreq[4]);
+                    displayNotes(4);
+                    break;
+                case "f":
+                    keyboardPic.src = url + "/build/images/synth/_d_f4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_f4.png";
+                    oscillators["note"] = playNote(noteFreq[5]);
+                    displayNotes(5);
+                    break;
+                case "t":
+                    keyboardPic.src = url + "/build/images/synth/_d_fs4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_fs4.png";
+                    oscillators["note"] = playNote(noteFreq[6]);
+                    displayNotes(6);
+                    break;
+                case "g":
+                    keyboardPic.src = url + "/build/images/synth/_d_g4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_g4.png";
+                    oscillators["note"] = playNote(noteFreq[7]);
+                    displayNotes(7);
+                    break;
+                case "y":
+                    keyboardPic.src = url + "/build/images/synth/_d_gs4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_gs4.png";
+                    oscillators["note"] = playNote(noteFreq[8]);
+                    displayNotes(8);
+                    break;
+                case "h":
+                    keyboardPic.src = url + "/build/images/synth/_d_a4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_a4.png";
+                    oscillators["note"] = playNote(noteFreq[9]);
+                    displayNotes(9);
+                    break;
+                case "u":
+                    keyboardPic.src = url + "/build/images/synth/_d_as4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_as4.png";
+                    oscillators["note"] = playNote(noteFreq[10]);
+                    displayNotes(10);
+                    break;
+                case "j":
+                    keyboardPic.src = url + "/build/images/synth/_d_b4.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_b4.png";
+                    oscillators["note"] = playNote(noteFreq[11]);
+                    displayNotes(11);
+                    break;
+                case "k":
+                    keyboardPic.src = url + "/build/images/synth/_d_c5.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_c5.png";
+                    oscillators["note"] = playNote(noteFreq[12]);
+                    displayNotes(12);
+                    break;
+                default:
+                    return;
+            }
+        }
 
 // creating events for buttons (click and touch)
         for (let j = 0; j < noteList.length; j++) {
@@ -304,6 +322,7 @@ export default class extends Controller {
             event.preventDefault();
         }
 
+        // don't remember what this does
         const wait = (cb, time) => {
             return new Promise((res) => {
                 setTimeout(() => {
@@ -321,8 +340,8 @@ export default class extends Controller {
         statusButton.addEventListener("click", onOff);
 
         function onOff() {
-            if (synthStatus === "off") {
-                synthStatus = "on";
+            if (synthStatus === false) {
+                synthStatus = true;
                 screenTitle.classList.remove("d-none");
                 screen.classList.add("screenBg");
                 startup.play();
@@ -347,7 +366,9 @@ export default class extends Controller {
         }
 
         // choosing waveform
-        waveformPicker.addEventListener("click", function () {
+        waveformPicker.addEventListener("click", pickWaveform);
+
+        function pickWaveform() {
             let waveform = waveformPicker.innerHTML;
 
             switch (waveform) {
@@ -368,10 +389,12 @@ export default class extends Controller {
                     type = "sine";
                     break;
             }
-        });
+        }
 
         // choosing if displaying notes or keyboard keys
-        displayTypeSelector.addEventListener("click", function () {
+        displayTypeSelector.addEventListener("click", selectDisplayType);
+
+        function selectDisplayType() {
             let displayType = displayTypeSelector.innerHTML;
 
             if (displayType === "NOTES") {
@@ -383,14 +406,14 @@ export default class extends Controller {
                 textNotes.classList.remove("d-none");
                 textKeys.classList.add("d-none");
             }
-        });
+        }
 
         // checking modal status
         function checkModalStatus() {
             if (saveModal.classList.contains("show")) {
-                modalStatus = "off";
+                modalStatus = false;
             } else {
-                modalStatus = "on";
+                modalStatus = true;
             }
 
             return modalStatus;
