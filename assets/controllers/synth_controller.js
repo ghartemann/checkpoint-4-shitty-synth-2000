@@ -39,6 +39,8 @@ export default class extends Controller {
         const saveForm = document.querySelector(".saveFormControlTextarea1");
         const saveFormKeys = document.querySelector(".saveFormControlTextarea2");
         const saveModal = document.getElementById("saveModal");
+        const loadSelector = document.getElementById("load-selector");
+        const tracksToLoad = document.getElementsByClassName("tracks-to-load");
 
         const keyboardPic = document.getElementById("keyboard-pic");
         const keyboardPicMobile = document.getElementById("keyboard-pic-mobile");
@@ -379,6 +381,24 @@ export default class extends Controller {
 
             return modalStatus;
         }
+
+        // displaying track according to select
+        loadSelector.addEventListener("change", function () {
+            if (loadSelector.value !== "none") {
+                for (const element of tracksToLoad) {
+                    if ("track_" + loadSelector.value === element.id) {
+                        element.classList.remove("d-none");
+                    } else {
+                        element.classList.add("d-none");
+                    }
+                }
+            } else {
+                for (const element of tracksToLoad) {
+                    element.classList.add("d-none");
+                }
+            }
+
+        })
 
     }
 }
