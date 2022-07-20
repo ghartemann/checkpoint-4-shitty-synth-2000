@@ -10,10 +10,6 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserFixtures extends Fixture
 {
-    public const USERS = [
-        ['email' => 'vin.diesel@laposte.net', 'password' => 'vroum', 'roles' => "['ROLE_SYNTHER']"],
-    ];
-
     private UserPasswordHasherInterface $passwordHasher;
 
     public function __construct(UserPasswordHasherInterface $passwordHasher)
@@ -32,15 +28,14 @@ class UserFixtures extends Fixture
         $user
             ->setEmail('g.hartemann@gmail.com')
             ->setPassword($hashedPassword)
-            ->setRoles("['ROLE_ADMIN']");
+            ->setRoles(['ROLE_ADMIN']);
         $manager->persist($user);
         $this->addReference('user_0', $user);
 
         // creating 10 users
         $faker = Factory::create('fr_FR');
-        $i = 1;
 
-        foreach (self::USERS as $userName) {
+        for ($i = 1; $i <= 10; $i++) {
             $user = new User();
             $hashedPassword = $this->passwordHasher->hashPassword(
                 $user,
@@ -49,10 +44,9 @@ class UserFixtures extends Fixture
             $user
                 ->setEmail($faker->email())
                 ->setPassword($hashedPassword)
-                ->setRoles("['ROLE_SYNTHER']");
+                ->setRoles(['ROLE_SYNTHER']);
             $manager->persist($user);
             $this->addReference('user_' . $i, $user);
-            $i++;
         }
 
         $manager->flush();

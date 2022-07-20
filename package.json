@@ -21,6 +21,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "animate.css": "^4.1.1"
+        "animate.css": "^4.1.1",
+        "stimulus-content-loader": "^4.0.1"
     }
 }

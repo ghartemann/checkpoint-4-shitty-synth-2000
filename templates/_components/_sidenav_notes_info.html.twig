@@ -27,7 +27,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for note in notes %}
+                    {% for note in notesService.getNotes() %}
                         <tr>
                             <td id="note-table-1-name">{{ note.name }}</td>
                             <td>{{ note.translation }}</td>
