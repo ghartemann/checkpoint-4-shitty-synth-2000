@@ -2,8 +2,8 @@
 ///////////////////// VALUES INITIALIZATION
 
 // url, for loading images (this should NOT work like this)
-// const url = "http://localhost:8080";
-const url = "";
+const url = "http://localhost:8080";
+// const url = "";
 
 // initializing WebAudio API
 const audioContext = new AudioContext({
@@ -15,6 +15,7 @@ let oscillators = [];
 let mainGainNode = null;
 let type = "sine";
 let synthStatus = "off";
+let modalStatus = "off";
 
 // getting elements from DOM
 const statusButton = document.getElementById("on-button");
@@ -28,8 +29,9 @@ const displayTypeSelector = document.getElementById("display-type");
 const screenSeparator = document.getElementById("screen-separator");
 const textNotes = document.getElementById("text-notes");
 const textKeys = document.getElementById("text-keys");
-const saveForm = document.getElementById("saveFormControlTextarea1");
-const saveFormKeys = document.getElementById("saveFormControlTextarea2");
+const saveForm = document.querySelector(".saveFormControlTextarea1");
+const saveFormKeys = document.querySelector(".saveFormControlTextarea2");
+const saveModal = document.getElementById("saveModal");
 
 const keyboardPic = document.getElementById("keyboard-pic");
 const keyboardPicMobile = document.getElementById("keyboard-pic-mobile");
@@ -159,7 +161,9 @@ function thingsThatHappen(event, noteIndex) {
 window.addEventListener(
     "keydown",
     function (event) {
-        if (!keydown && synthStatus == "on") {
+        modalStatus = checkModalStatus();
+
+        if (!keydown && synthStatus == "on" && modalStatus == "on") {
             keydown = true;
 
             if (event.defaultPrevented) {
@@ -355,3 +359,16 @@ displayTypeSelector.addEventListener("click", function () {
         textKeys.classList.add("d-none");
     }
 });
+
+// checking modal status
+
+
+function checkModalStatus() {
+    if (saveModal.classList.contains("show")) {
+        modalStatus = "off";
+    } else {
+        modalStatus = "on";
+    }
+
+    return modalStatus;
+}
