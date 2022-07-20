@@ -5,7 +5,7 @@
             {% if not is_granted('ROLE_USER') %}
                 <a href="{{ path("app_login") }}">Login</a>
             {% else %}
-                <a href="{{ path("app_login") }}">Logout</a>
+                <a href="{{ path("app_logout") }}">Logout</a>
             {% endif %}
         </li>
         <li>
