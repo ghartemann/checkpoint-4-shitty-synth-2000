@@ -13,8 +13,6 @@ class SynthController extends AbstractController
     #[Route('', name: 'index')]
     public function index(NoteRepository $noteRepository): Response
     {
-        $notes = $noteRepository->findAll();
-
-        return $this->render('synth/index.html.twig', ['notes' => $notes]);
+        return $this->render('synth/index.html.twig');
     }
 }

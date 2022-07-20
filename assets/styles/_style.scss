@@ -21,15 +21,6 @@ a {
   text-decoration: none;
 }
 
-#blur-container {
-  height: 100vh;
-  overflow: hidden;
-}
-
-.bg-blur {
-  backdrop-filter: blur(5px);
-}
-
 //////////////////// GLOBAL
 #logo {
   width: 120px;
@@ -44,6 +35,10 @@ a {
   font-family: "Courier New", Courier, monospace;
   color: #00ff04 !important;
   text-shadow: 0 0 15px #fff, 0 0 20px #00ff04, 0 0 30px #00ff0483;
+}
+
+.pink-shadow {
+  box-shadow: 0 0 20px deeppink;
 }
 
 //////////////////// HOME PAGE
@@ -73,6 +68,15 @@ a {
 
 .login-container {
   min-height: 95vh;
+}
+
+#blur-container {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.bg-blur {
+  backdrop-filter: blur(5px);
 }
 
 /* SIDENAV from https://www.codeur.com/tuto/css/menu-burger-html-css/#:~:text=Cr%C3%A9er%20un%20burger%20menu%20en,page%2C%20de%20haut%20en%20bas.*/

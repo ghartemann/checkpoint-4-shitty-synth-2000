@@ -13,8 +13,6 @@ class HomeController extends AbstractController
     #[Route('', name: 'home')]
     public function index(NoteRepository $noteRepository): Response
     {
-        $notes = $noteRepository->findAll();
-
-        return $this->render('home/index.html.twig', ['notes' => $notes]);
+        return $this->render('home/index.html.twig');
     }
 }
