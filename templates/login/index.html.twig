@@ -3,22 +3,46 @@
 {% block title %}Hello LoginController!{% endblock %}
 
 {% block body %}
-    {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    
+    <div data-controller="blur" class="container login-container d-flex align-items-center">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-6">
+                <div class="card bg-dark">
+                    <img src="{{ asset("build/images/login.jpeg") }}" class="card-img-top" alt="...">
+                    <div class="card-body">
 
-    <form action="{{ path('app_login') }}" method="post">
-        <label for="username">Email:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+                        {% if error %}
+                            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password"/>
+                        <div class="container">
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-10">
+                                    <form action="{{ path('app_login') }}" method="post">
+                                        <label for="username" class="form-label text-green">Email:</label>
+                                        <input class="form-control bg-dark text-green" type="text" id="username"
+                                               name="_username"/>
 
-        {# If you want to control the URL the user is redirected to on success
-        <input type="hidden" name="_target_path" value="/account"/> #}
-        
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                                        <label for="password" class="form-label text-green">Password:</label>
+                                        <input class="form-control bg-dark text-green" type="password" id="password"
+                                               name="_password"/>
 
-        <button type="submit">login</button>
-    </form>
+                                        <input type="hidden" name="_csrf_token"
+                                               value="{{ csrf_token('authenticate') }}">
+
+                                        <button class="btn btn-primary" type="submit">Login</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 {% endblock %}
