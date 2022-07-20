@@ -2,7 +2,8 @@
 ///////////////////// VALUES INITIALIZATION
 
 // url, for loading images (this should NOT work like this)
-const url = "http://localhost:8080";
+// const url = "http://localhost:8080";
+const url = "";
 
 // initializing WebAudio API
 const audioContext = new AudioContext({
