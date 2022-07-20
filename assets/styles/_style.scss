@@ -238,6 +238,10 @@ a {
   0 0 40px #00ff04, 0 0 55px #00ff04, 0 0 75px #00ff04;
 }
 
+#screen-options a {
+  cursor: pointer;
+}
+
 .key-buttons {
   position: absolute;
   top: 58vh;

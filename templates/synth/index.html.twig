@@ -21,15 +21,17 @@
                         <h1 id="screen-title" class="animate__animated animate__zoomIn animate__slower d-none m-0">
                             SHITTY SYNTH 2000
                         </h1>
-                        <div id="screen-options" class="d-flex justify-content-between d-none m-0">
+                        <div id="screen-options" class="d-flex justify-content-between d-none m-0 user-select-none">
                             <div>
-                                <a href="" data-bs-toggle="modal" data-bs-target="#saveModal">SAVE</a> |
-                                <a href="" data-bs-toggle="modal" data-bs-target="#loadModal">LOAD</a> |
-                                <a href="#" id="clear-screen">CLEAR</a>
+                                <a id="read-only" class="d-none">READ ONLY</a>
+                                <a data-bs-toggle="modal" data-bs-target="#saveModal" id="save-button">SAVE</a>
+                                |
+                                <a data-bs-toggle="modal" data-bs-target="#loadModal">LOAD</a> |
+                                <a id="clear-screen">CLEAR</a>
                             </div>
                             <div>
-                                <a href="#" id="display-type">NOTES</a> |
-                                <a href="#" id="waveform-picker">WAVEFORM: SINE</a>
+                                <a id="display-type">NOTES</a> |
+                                <a id="waveform-picker">WAVEFORM: SINE</a>
                             </div>
                         </div>
                         <hr class="m-0 d-none" id="screen-separator"/>
