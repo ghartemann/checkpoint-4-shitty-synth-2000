@@ -87,6 +87,13 @@ body {
   backdrop-filter: blur(10px);
 }
 
+.btn-danger:hover {
+  background-color: #69eeff !important;
+  box-shadow: 0 0 15px #fff, 0 0 20px #00e9ff, 0 0 30px #00e9ff,
+  0 0 40px #00e9ff, 0 0 55px #00e9ff, 0 0 75px #00e9ff;
+
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// HOME PAGE
 
