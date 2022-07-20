@@ -20,14 +20,14 @@ class TrackType extends AbstractType
                 'label' => 'Title*',
                 'required' => true,
                 'attr' => [
-                    'class' => 'form-control saveFormControlInput1',
+                    'class' => 'form-control saveFormControlInput1 mb-2',
                     'placeholder' => 'A title for your track',
                 ],
             ])
             ->add('artist', TextType::class, [
                 'label' => 'Artist',
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control mb-2',
                     'placeholder' => 'Artist name',
                 ],
             ])
@@ -35,7 +35,7 @@ class TrackType extends AbstractType
                 'label' => 'Picture*',
                 'required' => true,
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control mb-2',
                     'placeholder' => 'URL',
                 ],
             ])
@@ -43,7 +43,7 @@ class TrackType extends AbstractType
                 'label' => 'Notes*',
                 'required' => true,
                 'attr' => [
-                    'class' => 'form-control saveFormControlTextarea1',
+                    'class' => 'form-control saveFormControlTextarea1 mb-2',
                     'placeholder' => 'Autofilled when playing',
                 ],
             ])
@@ -51,7 +51,7 @@ class TrackType extends AbstractType
                 'label' => 'Keys*',
                 'required' => true,
                 'attr' => [
-                    'class' => 'form-control saveFormControlTextarea2',
+                    'class' => 'form-control saveFormControlTextarea2 mb-2',
                     'placeholder' => 'Autofilled when playing',
                 ],
             ])
@@ -61,15 +61,6 @@ class TrackType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Difficulty level (1-3)',
-                ],
-            ])
-            ->add('creator', null, [
-                'label' => 'Creator',
-                'choice_label' => function ($creator) {
-                    return $creator->getEmail();
-                },
-                'attr' => [
-                    'class' => 'form-control',
                 ],
             ]);
     }

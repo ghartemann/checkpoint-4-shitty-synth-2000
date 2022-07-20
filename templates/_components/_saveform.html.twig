@@ -14,7 +14,11 @@
             <div class="modal-body">
                 {{ form_start(form) }}
                 {{ form_widget(form) }}
-                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary btn-lg text-white mt-4 mb-3" data-bs-dismiss="modal">
+                        Save
+                    </button>
+                </div>
                 {{ form_end(form) }}
             </div>
         </div>

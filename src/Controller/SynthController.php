@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Track;
+use App\Entity\User;
 use App\Form\TrackType;
 use App\Repository\TrackRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,8 +17,11 @@ class SynthController extends AbstractController
     #[Route('', name: 'index')]
     public function index(Request $request, TrackRepository $trackRepository): Response
     {
+        /** @var User $user */
+        $user = $this->getUser();
         $track = new Track();
         $form = $this->createForm(TrackType::class, $track);
+        $track->setCreator($user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

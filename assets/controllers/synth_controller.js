@@ -147,6 +147,7 @@ export default class extends Controller {
 
 // this does some things (obviously)
         function thingsThatHappen(event, noteIndex) {
+            // hiding stuff when synth starts
             if (!screenTitle.classList.contains("d-none")) {
                 screenTitle.classList.add("d-none");
                 screen.style.display = "initial";
@@ -170,7 +171,7 @@ export default class extends Controller {
             function (event) {
                 modalStatus = checkModalStatus();
 
-                if (!keydown && synthStatus == "on" && modalStatus == "on") {
+                if (!keydown && synthStatus === "on" && modalStatus === "on") {
                     keydown = true;
 
                     if (event.defaultPrevented) {
@@ -247,7 +248,8 @@ export default class extends Controller {
                             return;
                     }
                 }
-                event.preventDefault();
+                // disabled this shit that was disabling the keyboard everywhere
+                // event.preventDefault();
             },
             true
         );
