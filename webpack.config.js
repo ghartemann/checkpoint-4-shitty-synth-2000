@@ -20,7 +20,20 @@ Encore
         // to: 'images/[path][name].[ext]',
 
         // if versioning is enabled, add the file hash too
-        to: 'images/[path][name].[hash:8].[ext]',
+        to: 'images/[path][name].[ext]',
+
+        // only copy files matching this pattern
+        // pattern: /\.(png|jpg|jpeg)$/
+    })
+
+    .copyFiles({
+        from: './assets/sounds',
+
+        // optional target path, relative to the output dir
+        // to: 'images/[path][name].[ext]',
+
+        // if versioning is enabled, add the file hash too
+        to: 'sounds/[name].[ext]',
 
         // only copy files matching this pattern
         // pattern: /\.(png|jpg|jpeg)$/

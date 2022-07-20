@@ -1,7 +1,61 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SynthController!{% endblock %}
-
 {% block body %}
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="main-title-container col-12 d-flex align-items-end justify-content-center"></div>
+        </div>
+        <div class="row">
+            <div class="col-12 main-keyboard p-0 m-0">
+                <div class="keyboard-container col-12 p-0 d-flex justify-content-center animate__animated animate__fadeInUpBig">
+                    <!-- desktop version -->
+                    <img id="keyboard-pic" src="{{ asset("build/images/synth/_d_default.png") }}"
+                         class="d-none d-md-block" alt="Synth picture (desktop size)"/>
+                    <!-- mobile version -->
+                    <img id="keyboard-pic-mobile" src="{{ asset("build/images/synth/_m_default.png") }}"
+                         class="d-xs-block d-md-none" alt="Synth picture (mobile size)"/>
+                    <button id="on-button" class="button-glowing">ON</button>
+                    <audio id="audio" src="{{ asset("build/sounds/startup.mp3") }}"></audio>
+                    <div id="screen" class="container-fluid">
+                        <h1 id="screen-title" class="animate__animated animate__zoomIn animate__slower d-none m-0">
+                            SHITTY SYNTH 2000
+                        </h1>
+                        <div id="screen-options" class="d-flex justify-content-between d-none m-0">
+                            <div>
+                                <a href="" data-bs-toggle="modal" data-bs-target="#saveModal">SAVE</a> |
+                                <a href="#">LOAD</a> |
+                                <a href="#" id="clear-screen">CLEAR</a>
+                            </div>
+                            <div>
+                                <a href="#" id="display-type">NOTES</a> |
+                                <a href="#" id="waveform-picker">WAVEFORM: SINE</a>
+                            </div>
+                        </div>
+                        <hr class="m-0 d-none" id="screen-separator"/>
+                        <p id="text-notes" class="notes-text m-0"></p>
+                        <p id="text-keys" class="notes-keys m-0 d-none"></p>
+                    </div>
+                    <div class="key-buttons">
+                        <button id="button0" class="key-button"></button>
+                        <button id="button1" class="key-button sharp"></button>
+                        <button id="button2" class="key-button"></button>
+                        <button id="button3" class="key-button sharp"></button>
+                        <button id="button4" class="key-button"></button>
+                        <button id="button5" class="key-button"></button>
+                        <button id="button6" class="key-button sharp"></button>
+                        <button id="button7" class="key-button"></button>
+                        <button id="button8" class="key-button sharp"></button>
+                        <button id="button9" class="key-button"></button>
+                        <button id="button10" class="key-button sharp"></button>
+                        <button id="button11" class="key-button"></button>
+                        <button id="button12" class="key-button"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div id="keyboard"></div>
+
+    {{ include('_components/_saveform.html.twig') }}
 {% endblock %}
