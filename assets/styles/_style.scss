@@ -1,5 +1,5 @@
 /* ---------- REDEFINING BOOTSTRAP COLOURS ---------- */
-$primary: #B1367E;
+$primary: #ff3cef;
 
 @font-face {
   font-family: "Lazer84";
@@ -60,6 +60,21 @@ a {
   .main-title {
     font-size: 30pt;
   }
+}
+
+//caution: is actually pink (???)
+.text-green {
+  font-family: "Courier New", Courier, monospace;
+  color: #eb5cff !important;
+  text-shadow: 0 0 15px #fff, 0 0 20px #ed00ff, 0 0 30px rgba(191, 0, 255, 0.51);
+}
+
+.text-white {
+  color: #FFFFFF;
+}
+
+.pink-shadow {
+  box-shadow: 0 0 20px deeppink;
 }
 
 //////////////////// HOME PAGE
@@ -257,6 +272,21 @@ a {
   }
 }
 
+
+//////////////////// LOGIN PAGE
+
+.login-container {
+  min-height: 95vh;
+}
+
+#blur-container {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.bg-blur {
+  backdrop-filter: blur(5px);
+}
 
 /* SIDENAV from https://www.codeur.com/tuto/css/menu-burger-html-css/#:~:text=Cr%C3%A9er%20un%20burger%20menu%20en,page%2C%20de%20haut%20en%20bas.*/
 /* Sidenav menu */

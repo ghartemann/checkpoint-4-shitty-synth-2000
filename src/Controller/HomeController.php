@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/', name: 'app_')]
 class HomeController extends AbstractController
 {
-    #[Route('/', name: 'home')]
+    #[Route('', name: 'home')]
     public function index(NoteRepository $noteRepository): Response
     {
         $notes = $noteRepository->findAll();
