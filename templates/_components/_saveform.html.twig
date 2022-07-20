@@ -12,22 +12,14 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label for="saveFormControlInput1" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="saveFormControlInput1"
-                               placeholder="A title for your track"/>
-                    </div>
-                    <div class="mb-3">
-                        <label for="saveFormControlTextarea1" class="form-label">Notes</label>
-                        <textarea class="form-control" id="saveFormControlTextarea1" rows="3"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="saveFormControlTextarea2" class="form-label">Keys</label>
-                        <textarea class="form-control" id="saveFormControlTextarea2" rows="3"></textarea>
-                    </div>
-                    <button class="btn btn-primary" data-bs-dismiss="modal">Save</button>
-                </form>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary btn-lg text-white mt-4 mb-3" data-bs-dismiss="modal">
+                        Save
+                    </button>
+                </div>
+                {{ form_end(form) }}
             </div>
         </div>
     </div>

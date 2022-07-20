@@ -37,6 +37,9 @@ class Track
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'favorites', cascade: ['persist'])]
     private Collection $favouriters;
 
+    #[ORM\Column(length: 255)]
+    private ?string $letters = null;
+
     public function __construct()
     {
         $this->favouriters = new ArrayCollection();
@@ -139,6 +142,18 @@ class Track
     public function removeFavouriter(User $favouriter): self
     {
         $this->favouriters->removeElement($favouriter);
+
+        return $this;
+    }
+
+    public function getLetters(): ?string
+    {
+        return $this->letters;
+    }
+
+    public function setLetters(string $letters): self
+    {
+        $this->letters = $letters;
 
         return $this;
     }
