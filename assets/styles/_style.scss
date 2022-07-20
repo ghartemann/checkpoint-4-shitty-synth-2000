@@ -1,5 +1,5 @@
 /* ---------- REDEFINING BOOTSTRAP COLOURS ---------- */
-$primary: #B1367E;
+$primary: #ff3cef;
 
 @font-face {
   font-family: "Lazer84";
@@ -31,10 +31,15 @@ a {
   // TODO: add shadow?
 }
 
+//caution: is actually pink (???)
 .text-green {
   font-family: "Courier New", Courier, monospace;
-  color: #00ff04 !important;
-  text-shadow: 0 0 15px #fff, 0 0 20px #00ff04, 0 0 30px #00ff0483;
+  color: #eb5cff !important;
+  text-shadow: 0 0 15px #fff, 0 0 20px #ed00ff, 0 0 30px rgba(191, 0, 255, 0.51);
+}
+
+.text-white {
+  color: #FFFFFF;
 }
 
 .pink-shadow {

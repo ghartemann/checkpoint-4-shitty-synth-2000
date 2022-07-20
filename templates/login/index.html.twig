@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LoginController!{% endblock %}
+{% block title %}Login - {% endblock %}
 
 {% block body %}
 
@@ -24,14 +24,17 @@
                                         <input class="form-control bg-dark text-green" type="text" id="username"
                                                name="_username"/>
 
-                                        <label for="password" class="form-label text-green">Password:</label>
+                                        <label for="password" class="form-label text-green mt-3">Password:</label>
                                         <input class="form-control bg-dark text-green" type="password" id="password"
                                                name="_password"/>
 
                                         <input type="hidden" name="_csrf_token"
                                                value="{{ csrf_token('authenticate') }}">
 
-                                        <button class="btn btn-primary" type="submit">Login</button>
+                                        <div class="d-flex justify-content-center mt-5">
+                                            <button class="btn btn-lg btn-primary text-white" type="submit">Login
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
