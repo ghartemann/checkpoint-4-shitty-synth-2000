@@ -477,7 +477,6 @@ export default class extends Controller {
                     k++;
                 }, 510);
             }
-            lockScreen = false;
         }
 
         const wait = (cb, time) => {
