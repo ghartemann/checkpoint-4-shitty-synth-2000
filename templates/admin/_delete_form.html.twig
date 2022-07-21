@@ -1,7 +1,5 @@
 <form method="post" action="{{ path('app_track_delete', {'id': track.id}) }}"
       onsubmit="return confirm('Do you really want to delete this track?');">
     <input type="hidden" name="_token" value="{{ csrf_token('_delete' ~ track.id) }}">
-    <div class="d-flex justify-content-center">
-        <button class="btn btn-danger text-blue mt-2">Delete</button>
-    </div>
+    <button class="delete-btn-admin"><i class="fa-solid fa-trash-can"></i></button>
 </form>

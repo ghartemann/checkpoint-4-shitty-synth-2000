@@ -26,6 +26,7 @@ class TrackType extends AbstractType
             ])
             ->add('artist', TextType::class, [
                 'label' => 'Artist',
+                'required' => false,
                 'attr' => [
                     'class' => 'form-control mb-2',
                     'placeholder' => 'Artist name',

@@ -1,9 +1,62 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}[ADMIN] Tracks - {% endblock %}
+
 {% block body %}
+    <div class="container mb-5 d-flex flex-column justify-content-center">
+        <div class="row">
+            <div class="main-title-container col-12 d-flex align-items-center justify-content-center mt-5 pt-5 mb-5">
+                <h1 class="main-title">Tracks</h1>
+            </div>
+        </div>
 
-{% endblock %}
+        <div class="mb-3">
+            <a href="{{ path("app_admin_index") }}">
+                <button class="btn btn-danger">Back</button>
+            </a>
+        </div>
 
-{% block title %}
+        <div class="card bg-primary bg-opacity-25 semitransparent mb-3 text-white">
+            <div class="row g-0">
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                        <tr class="text-white">
+                            <th scope="col">#</th>
+                            <th scope="col">Id</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Artist</th>
+                            <th scope="col">Creator</th>
+                            <th scope="col">Youtube</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for track in tracks %}
+                            <tr class="text-white">
+                                <th scope="row">{{ loop.index }}</th>
+                                <th scope="row">{{ track.id }}</th>
+                                <td>
+                                    <a href="{{ path("app_track_show", {'id': track.id}) }}">{{ track.title }}</a>
+                                </td>
+                                <td>{{ track.artist }}</td>
+                                <td>{{ track.creator.email }}</td>
+                                <td>
+                                    {% if track.youtube %}
+                                        Yes
+                                    {% else %}
+                                        No
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {{ include('admin/_delete_form.html.twig') }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
 
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Track;
+use App\Form\TrackType;
 use App\Repository\TrackRepository;
 use Exception;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -11,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
+#[IsGranted('ROLE_USER')]
 #[Route('/track', name: 'app_track_')]
 class TrackController extends AbstractController
 {
@@ -26,6 +28,24 @@ class TrackController extends AbstractController
     public function show(Track $track): Response
     {
         return $this->render('track/show.html.twig', ['track' => $track]);
+    }
+
+    #[Route('/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]
+    public function edit(
+        Track           $track,
+        TrackRepository $trackRepository,
+        Request         $request,
+    ): Response
+    {
+        $form = $this->createForm(TrackType::class, $track);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $trackRepository->add($track, true);
+
+            return $this->redirectToRoute('app_track_show', ['id' => $track->getId()]);
+        }
+
+        return $this->renderForm('track/edit.html.twig', ['track' => $track, 'form' => $form,]);
     }
 
     /**

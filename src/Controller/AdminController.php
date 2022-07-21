@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\TrackRepository;
 use App\Repository\UserRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,8 +28,10 @@ class AdminController extends AbstractController
     }
 
     #[Route('/tracks', name: 'tracks')]
-    public function tracks(): Response
+    public function tracks(TrackRepository $trackRepository): Response
     {
-        return $this->render('admin/tracks.html.twig');
+        $tracks = $trackRepository->findAll();
+
+        return $this->render('admin/tracks.html.twig', ['tracks' => $tracks]);
     }
 }

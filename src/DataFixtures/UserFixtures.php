@@ -33,7 +33,7 @@ class UserFixtures extends Fixture
         $this->addReference('user_0', $user);
 
         // creating 10 users
-        $faker = Factory::create('fr_FR');
+        $faker = Factory::create();
 
         for ($i = 1; $i <= 10; $i++) {
             $user = new User();
