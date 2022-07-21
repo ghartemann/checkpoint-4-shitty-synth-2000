@@ -2,6 +2,6 @@
       onsubmit="return confirm('Do you really want to delete this track?');">
     <input type="hidden" name="_token" value="{{ csrf_token('_delete' ~ track.id) }}">
     <div class="d-flex justify-content-center">
-        <button class="btn btn-danger text-blue mt-2">Delete</button>
+        <button class="btn btn-danger text-blue">Delete</button>
     </div>
 </form>

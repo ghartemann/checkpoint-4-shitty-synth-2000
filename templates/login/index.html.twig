@@ -3,38 +3,43 @@
 {% block title %}Login - {% endblock %}
 
 {% block body %}
-
     <div data-controller="blur"
          class="container login-container d-flex align-items-center animate__animated animate__zoomIn">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-6">
-                <div class="card bg-primary bg-opacity-50 semitransparent pink-shadow text-white">
+                <div class="card bg-secondary bg-opacity-50 semitransparent pink-shadow text-white">
                     <img src="{{ asset("build/images/login.jpeg") }}" class="card-img-top" alt="The city">
                     <div class="card-body">
 
                         {% if error %}
-                            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            <div class="col-12 d-flex justify-content-center mb-2 mt-3">
+                                <div class="text-center alert alert-danger w-50">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            </div>
                         {% endif %}
 
                         <div class="container">
                             <div class="row d-flex justify-content-center">
                                 <div class="col-10">
                                     <form action="{{ path('app_login') }}" method="post">
-                                        <label for="username" class="form-label">Email:</label>
-                                        <input class="form-control" type="text" id="username"
+                                        <label for="username" class="form-label">Email</label>
+                                        <input class="form-control input-pink text-white" type="text" id="username"
                                                name="_username"/>
 
-                                        <label for="password" class="form-label mt-3">Password:</label>
-                                        <input class="form-control" type="password" id="password"
+                                        <label for="password" class="form-label mt-3">Password</label>
+                                        <input class="form-control input-pink text-white" type="password" id="password"
                                                name="_password"/>
 
                                         <input type="hidden" name="_csrf_token"
                                                value="{{ csrf_token('authenticate') }}">
 
-                                        <div class="d-flex justify-content-center mt-5">
+                                        <div class="d-flex flex-column align-items-center justify-content-center mt-5">
                                             <button class="login-button bg-transparent main-title"
                                                     type="submit">Log in
                                             </button>
+                                            <div class="d-flex gap-2 mt-5">
+                                                <p class="mb-0">Need an account?</p>
+                                                <a href="{{ path("app_register") }}" class="text-cyan">Register here</a>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
@@ -45,9 +50,4 @@
             </div>
         </div>
     </div>
-
-
-
-
-
 {% endblock %}

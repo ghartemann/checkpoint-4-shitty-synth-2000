@@ -19,8 +19,8 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// REDEFINING BOOTSTRAP THINGS
 
-$primary: #ff3cef;
-$secondary: #4bbd00;
+$primary: #00ffff;
+$secondary: #ff3cef;
 $danger: #00ffff;
 $btn-close-color: white;
 
@@ -87,13 +87,22 @@ body {
 }
 
 .text-blue {
-  color: #001e91;
+  color: #001e91 !important;
 }
 
 .text-green {
   font-family: "Courier New", Courier, monospace;
   color: #00ff04;
   text-shadow: var(--shadow-green-s);
+}
+
+.text-cyan {
+  color: #00ffff;
+}
+
+.text-cyan:hover {
+  color: #ffffff;
+  text-shadow: var(--shadow-blue-xs);
 }
 
 .pink-shadow {
@@ -109,6 +118,10 @@ body {
   background-color: #81f0ff !important;
   box-shadow: var(--shadow-blue);
   border: 1px solid #81f0ff !important;
+}
+
+.input-pink {
+  background-color: rgba(255, 0, 0, 0) !important;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

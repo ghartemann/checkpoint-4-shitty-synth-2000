@@ -16,7 +16,7 @@
             </a>
         </div>
 
-        <div class="card bg-primary bg-opacity-25 semitransparent mb-3 text-white">
+        <div class="card bg-secondary bg-opacity-25 semitransparent mb-3 text-white overflow-scroll">
             <div class="row g-0">
                 <div class="card-body">
                     <table class="table">
@@ -38,7 +38,7 @@
                                 <td>{{ user.email }}</td>
                                 <td>
                                     {% for role in user.roles %}
-                                        {{ role }}{% if not loop.last %}, {% endif %}
+                                        {{ role|replace({'ROLE_': '', 'USER': ''}) }}
                                     {% endfor %}
                                 </td>
                             </tr>
