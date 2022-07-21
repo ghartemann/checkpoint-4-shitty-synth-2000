@@ -1,7 +1,7 @@
-<div id="mySidenav" class="sidenav bg-dark">
+<div id="mySidenav" class="sidenav bg-dark pink-shadow">
     <a id="closeBtn" href="#" class="close">×</a>
     <ul>
-        <li>
+        <li class="mb-5">
             {% if not is_granted('ROLE_USER') %}
                 <a href="{{ path("app_login") }}">Login</a>
             {% else %}
@@ -11,7 +11,7 @@
         <li>
             <a href="{{ path("app_synth_index") }}">Synth</a>
         </li>
-        <li>
+        <li class="mb-5">
             <a href="{{ path("app_track_index") }}">Tracklist</a>
         </li>
         <li>
