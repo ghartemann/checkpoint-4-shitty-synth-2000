@@ -386,17 +386,16 @@ body {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: rgb(201, 255, 121);
-  font-family: "Courier New", Courier, monospace;
-  text-shadow: 0 0 15px #fff, 0 0 20px #00ff04;
+  color: rgb(0, 255, 247);
+  text-shadow: 0 0 15px #fff, 0 0 20px #00eaff;
   display: block;
   transition: 0.3s;
 }
 
 .sidenav a:hover {
   color: rgb(255, 255, 255);
-  text-shadow: 0 0 15px #fff, 0 0 20px #00ff04, 0 0 30px #00ff04,
-  0 0 40px #00ff04, 0 0 55px #00ff04, 0 0 75px #00ff04;
+  text-shadow: 0 0 15px #fff, 0 0 20px #ff82d9, 0 0 30px #ff46c9,
+  0 0 40px #ff46c9, 0 0 55px #ff46c9, 0 0 75px #ff46c9;
 }
 
 .sidenav p {
