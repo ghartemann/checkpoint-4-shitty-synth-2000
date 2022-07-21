@@ -21,8 +21,8 @@ class TrackFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'title' => 'Au clair de la lune',
-            'notes' => 'G G G A B A G B A A G G G G A B A G B A A G A A A A E E A G F# F E D G G G A B A G B A A G',
-            'letters' => 'TODO',
+            'notes' => 'G G G A B A G B A A G G G G A B A G B A A G A A A A E E A G F# E D G G G A B A G B A A G',
+            'letters' => 'G G G H J H G J H H G G G G H J H G J H H G H H H H D D H G T D S G G G H J H G J H H G',
             'artist' => null,
             'picture' => 'lune.jpg',
             'difficulty' => 2,
@@ -31,7 +31,7 @@ class TrackFixtures extends Fixture implements DependentFixtureInterface
         [
             'title' => 'The Saints Go Marching In',
             'notes' => 'C E F G C E F G C E F G E C E D E E D C C E G G F F E F G E C D C',
-            'letters' => 'TODO',
+            'letters' => 'Q D F G Q D F G Q D F G D Q D S D D S Q Q D G G F F D F G D Q S Q',
             'artist' => "Treme Brass Band",
             'picture' => 'treme.jpeg',
             'difficulty' => 2,
@@ -39,8 +39,8 @@ class TrackFixtures extends Fixture implements DependentFixtureInterface
         ],
         [
             'title' => 'Le petit bonhomme en mousse',
-            'notes' => 'C A G F E F C C B A G F E F D D Bb A G F# G C5 C5 C5 C5 C5 C5 Bb G F',
-            'letters' => 'TODO',
+            'notes' => 'C A G F E F C C A G F E F D D Bb A G F# G C5 C5 C5 C5 C5 C5 Bb G F',
+            'letters' => 'Q H G F D F Q Q H G F D F S S U H G T G K K K K K K U G F',
             'artist' => "Patrick Sébastien",
             'picture' => 'petit-bonhomme.jpeg',
             'difficulty' => 3,
@@ -49,7 +49,7 @@ class TrackFixtures extends Fixture implements DependentFixtureInterface
         [
             'title' => 'The Aristocats',
             'notes' => 'C E G E C E G E F A C5 A C5 C5 B A G F E D C D E D E D C C',
-            'letters' => 'TODO',
+            'letters' => 'Q D G D Q D G D F H K H K K J H G F D S Q S D S D S Q Q',
             'artist' => 'Walt Disney',
             'picture' => 'cats.jpg',
             'difficulty' => 2,
@@ -58,7 +58,7 @@ class TrackFixtures extends Fixture implements DependentFixtureInterface
         [
             'title' => 'Happy Birthday to You',
             'notes' => 'C C D C F E C C D C G F C C C5 A F E D Bb Bb A F G F',
-            'letters' => 'TODO',
+            'letters' => 'Q Q S Q F D Q Q S Q G F Q Q K H F D S U U H F G F ',
             'artist' => null,
             'picture' => 'birthday.jpg',
             'difficulty' => 3,
