@@ -1,14 +1,19 @@
 <div id="mySidenav" class="sidenav bg-dark pink-shadow">
     <a id="closeBtn" href="#" class="close">×</a>
     <ul>
-        <li class="mb-5">
+        <li>
             {% if not is_granted('ROLE_USER') %}
                 <a href="{{ path("app_login") }}">Login</a>
             {% else %}
                 <a href="{{ path("app_logout") }}">Logout</a>
             {% endif %}
         </li>
-        <li>
+        {% if not is_granted('ROLE_ADMIN') %}
+            <li>
+                <a href="{{ path("app_admin_index") }}">Admin</a>
+            </li>
+        {% endif %}
+        <li class="mt-5">
             <a href="{{ path("app_synth_index") }}">Synth</a>
         </li>
         <li class="mb-5">
