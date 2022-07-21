@@ -1,5 +1,24 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////// VARS
+
+:root {
+  --text-maroon: #C4B192;
+  --shadow-green: 0 0 15px #fff, 0 0 20px #00ff04, 0 0 30px #00ff04,
+  0 0 40px #00ff04, 0 0 55px #00ff04, 0 0 75px #00ff04;
+  --shadow-green-s: 0 0 15px #fff, 0 0 20px #00ff04, 0 0 30px #00ff0483;
+  --shadow-pink: 0 0 15px #fff, 0 0 20px #ff00f9, 0 0 30px #ff00f9,
+  0 0 40px #ff00f9, 0 0 55px #ff00f9, 0 0 75px #ff00f9;
+  --shadow-orange: 0 0 15px #fff, 0 0 20px #ff5e00, 0 0 30px #ff5e00,
+  0 0 40px #ff5e00, 0 0 55px #ff5e00, 0 0 75px #ff5e00;
+  --shadow-blue: 0 0 15px #fff, 0 0 20px #00e9ff, 0 0 30px #00e9ff,
+  0 0 40px #00e9ff, 0 0 55px #00e9ff, 0 0 75px #00e9ff;
+  --shadow-blue-xs: 0 0 15px #fff, 0 0 20px #00eaff;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// REDEFINING BOOTSTRAP THINGS
+
 $primary: #ff3cef;
 $secondary: #4bbd00;
 $danger: #00ffff;
@@ -50,13 +69,11 @@ body {
   font-family: "Lazer84";
   font-size: 36pt;
   word-spacing: 20px;
-  text-shadow: 0 0 15px #fff, 0 0 20px #ff00f9, 0 0 30px #ff00f9,
-  0 0 40px #ff00f9, 0 0 55px #ff00f9, 0 0 75px #ff00f9;
+  text-shadow: var(--shadow-pink);
 }
 
 .main-title-2 {
-  text-shadow: 0 0 15px #fff, 0 0 20px #ff5e00, 0 0 30px #ff5e00,
-  0 0 40px #ff5e00, 0 0 55px #ff5e00, 0 0 75px #ff5e00;
+  text-shadow: var(--shadow-orange);
 }
 
 @media screen and (max-width: 768px) {
@@ -76,7 +93,7 @@ body {
 .text-green {
   font-family: "Courier New", Courier, monospace;
   color: #00ff04;
-  text-shadow: 0 0 15px #fff, 0 0 20px #00ff04, 0 0 30px #00ff0483;
+  text-shadow: var(--shadow-green-s);
 }
 
 .pink-shadow {
@@ -90,8 +107,7 @@ body {
 .btn-danger:hover {
   color: #FFFFFF !important;
   background-color: #81f0ff !important;
-  box-shadow: 0 0 15px #fff, 0 0 20px #00e9ff, 0 0 30px #00e9ff,
-  0 0 40px #00e9ff, 0 0 55px #00e9ff, 0 0 75px #00e9ff;
+  box-shadow: var(--shadow-blue);
   border: 1px solid #81f0ff !important;
 }
 
@@ -106,13 +122,11 @@ body {
   font-family: "Lazer84";
   font-size: 80pt;
   color: #ffffff;
-  text-shadow: 0 0 15px #fff, 0 0 20px #ff00f9, 0 0 30px #ff00f9,
-  0 0 40px #ff00f9, 0 0 55px #ff00f9, 0 0 75px #ff00f9;
+  text-shadow: var(--shadow-pink);
 }
 
 .begin:hover {
-  text-shadow: 0 0 15px #fff, 0 0 20px #00e9ff, 0 0 30px #00e9ff,
-  0 0 40px #00e9ff, 0 0 55px #00e9ff, 0 0 75px #00e9ff;
+  text-shadow: var(--shadow-blue);
 }
 
 .index-container {
@@ -245,8 +259,7 @@ body {
   font-family: "Lazer84";
   font-size: 4vh;
   word-spacing: 5px;
-  text-shadow: 0 0 15px #fff, 0 0 20px #00ff04, 0 0 30px #00ff04,
-  0 0 40px #00ff04, 0 0 55px #00ff04, 0 0 75px #00ff04;
+  text-shadow: var(--shadow-green);
 }
 
 #screen-separator {
@@ -256,14 +269,11 @@ body {
 .notes-text,
 .notes-keys,
 #screen-options,
-#screen-options a,
-.sidenav > a {
+#screen-options a {
   font-size: 1.5vh;
   color: rgb(201, 255, 121);
   font-family: "Courier New", Courier, monospace;
-  text-decoration: none;
-  text-shadow: 0 0 15px #fff, 0 0 20px #00ff04, 0 0 30px #00ff04,
-  0 0 40px #00ff04, 0 0 55px #00ff04, 0 0 75px #00ff04;
+  text-shadow: var(--shadow-green);
 }
 
 @media screen and (max-width: 768px) {
@@ -349,14 +359,12 @@ body {
   font-family: "Lazer84";
   font-size: 36pt;
   word-spacing: 20px;
-  text-shadow: 0 0 15px #fff, 0 0 20px #ff00f9, 0 0 30px #ff00f9,
-  0 0 40px #ff00f9, 0 0 55px #ff00f9, 0 0 75px #ff00f9;
+  text-shadow: var(--shadow-pink);
   border: none;
 }
 
 .login-button:hover {
-  text-shadow: 0 0 15px #fff, 0 0 20px #00e9ff, 0 0 30px #00e9ff,
-  0 0 40px #00e9ff, 0 0 55px #00e9ff, 0 0 75px #00e9ff;
+  text-shadow: var(--shadow-blue);
 }
 
 
@@ -398,15 +406,14 @@ body {
   text-decoration: none;
   font-size: 25px;
   color: rgb(0, 255, 247);
-  text-shadow: 0 0 15px #fff, 0 0 20px #00eaff;
+  text-shadow: var(--shadow-blue-xs);
   display: block;
   transition: 0.3s;
 }
 
 .sidenav a:hover {
   color: rgb(255, 255, 255);
-  text-shadow: 0 0 15px #fff, 0 0 20px #ff82d9, 0 0 30px #ff46c9,
-  0 0 40px #ff46c9, 0 0 55px #ff46c9, 0 0 75px #ff46c9;
+  text-shadow: var(--shadow-pink);
 }
 
 .sidenav p {
@@ -444,4 +451,9 @@ body {
   background-color: white;
   margin: 6px 0;
   border-radius: 5px;
+}
+
+.youtube-container, .youtube-video {
+  height: 36vw;
+  width: 64vw;
 }
