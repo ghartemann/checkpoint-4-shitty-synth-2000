@@ -22,7 +22,7 @@
 $primary: #ff3cef;
 $secondary: #4bbd00;
 $danger: #00ffff;
-$modal-backdrop-bg: none;
+$btn-close-color: white;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -123,6 +123,7 @@ body {
   font-size: 80pt;
   color: #ffffff;
   text-shadow: var(--shadow-pink);
+  transition: 0.3s;
 }
 
 .begin:hover {
@@ -361,6 +362,7 @@ body {
   word-spacing: 20px;
   text-shadow: var(--shadow-pink);
   border: none;
+  transition: 0.3s;
 }
 
 .login-button:hover {
@@ -394,10 +396,9 @@ body {
   position: fixed;
   z-index: 1;
   top: 0;
-  right: -250px;
+  right: -260px;
   padding-top: 60px;
   transition: right 0.5s ease;
-  box-shadow: var(--box-shadow);
 }
 
 /* Sidenav menu links */
