@@ -6,7 +6,7 @@
     <div class="container mt-5 mt-sm-0 pt-5 pt-sm-0 mb-5 mb-5">
         <div class="row mb-4 mb-sm-0">
             <div class="main-title-container col-12 d-flex align-items-center justify-content-center">
-                <h1 class="main-title">Tracklist</h1>
+                <h1 class="main-title user-select-none">Tracklist</h1>
             </div>
         </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -16,7 +16,7 @@
                         <div class="card h-100 bg-primary bg-opacity-25 semitransparent text-white">
                             <img src="{{ track.picture }}"
                                  class="card-img-top img-ratio"
-                                 alt="..."/>
+                                 alt="{{ track.title }} cover picture"/>
                             <div class="card-body">
                                 <h4 class="card-title">{{ track.title }}{% if track.artist %} - {{ track.artist }}{% endif %}</h4>
                                 <p>Difficulty: {{ track.difficulty }}/3</p>

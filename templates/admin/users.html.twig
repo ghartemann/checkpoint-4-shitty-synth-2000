@@ -6,7 +6,7 @@
     <div class="container mb-5 d-flex flex-column justify-content-center">
         <div class="row">
             <div class="main-title-container col-12 d-flex align-items-center justify-content-center mt-5 pt-5 mb-5">
-                <h1 class="main-title">Users</h1>
+                <h1 class="main-title user-select-none">Users</h1>
             </div>
         </div>
 
@@ -24,6 +24,7 @@
                         <tr class="text-white">
                             <th scope="col">#</th>
                             <th scope="col">Id</th>
+                            <th scope="col">Nickname</th>
                             <th scope="col">Email</th>
                             <th scope="col">Role</th>
                         </tr>
@@ -33,6 +34,7 @@
                             <tr class="text-white">
                                 <th scope="row">{{ loop.index }}</th>
                                 <th scope="row">{{ user.id }}</th>
+                                <td>{{ user.nickname }}</td>
                                 <td>{{ user.email }}</td>
                                 <td>
                                     {% for role in user.roles %}

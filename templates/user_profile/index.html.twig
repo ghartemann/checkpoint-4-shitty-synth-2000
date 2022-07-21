@@ -6,16 +6,18 @@
     <div class="container mb-5">
         <div class="row">
             <div class="main-title-container col-12 d-flex align-items-center justify-content-center">
-                <h1 class="main-title">User profile</h1>
+                <h1 class="main-title user-select-none">User profile</h1>
             </div>
         </div>
-        <div class="row d-flex justify-content-center">
-            <div class="col-6">
+
+        <div class="row d-flex justify-content-center mt-5">
+            <div class="col-12 col-md-6">
                 <div class="card bg-dark pink-shadow text-white d-flex justify-content-center animate__animated animate__zoomIn">
-                    <div class="card-body col-8">
-                        <h2 class="card-title mb-5">{{ app.user.email }}</h2>
-                        <h4 class="card-text">Tracks posted : {{ app.user.tracks|length }}</h4>
-                        <h4 class="card-text">Likes : {{ app.user.favorites|length }}</h4>
+                    <div class="card-body col-12">
+                        <h2 class="card-title mb-5">Welcome home, {{ app.user.nickname }}!</h2>
+                        <h4 class="card-title mb-3">Email: {{ app.user.email }}</h4>
+                        <h4 class="card-text mb-3">Tracks posted: {{ app.user.tracks|length }}</h4>
+                        <h4 class="card-text">Likes: {{ app.user.favorites|length }}</h4>
                         <a href="{{ path("app_user_profile_tracks") }}">
                             <button class="btn btn-danger mt-5">My tracks</button>
                         </a>
