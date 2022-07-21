@@ -23,7 +23,6 @@ export default class extends Controller {
         let oscillators = [];
         let mainGainNode = null;
         let type = "sine";
-        // maybe make these two booleans instead? MIGHT BE A GREAT IDEA
         let synthStatus = false;
         let modalStatus = false;
         let lockScreen = false;
@@ -480,7 +479,7 @@ export default class extends Controller {
             }
             lockScreen = false;
         }
-        
+
         const wait = (cb, time) => {
             return new Promise((res) => {
                 setTimeout(() => {
