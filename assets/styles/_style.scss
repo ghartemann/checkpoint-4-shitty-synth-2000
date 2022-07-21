@@ -131,7 +131,7 @@ body {
   height: 90vh;
 }
 
-#on-button {
+#on-button, #playback-button {
   position: absolute;
   background-color: rgb(59, 59, 59);
   color: white;
@@ -143,6 +143,11 @@ body {
   height: 3.4vh;
   transform: translateX(-490%);
   font-size: 1.5vh;
+}
+
+#playback-button {
+  top: 16vh;
+  transform: translateX(365%);
 }
 
 .button-glowing {
