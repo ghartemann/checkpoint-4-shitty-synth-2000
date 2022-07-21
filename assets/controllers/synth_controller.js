@@ -48,6 +48,7 @@ export default class extends Controller {
         const loadButton = document.getElementById("load-button");
         const saveButton = document.getElementById("save-button");
         const readOnly = document.getElementById("read-only");
+        const playbackButton = document.getElementById("playback-button");
 
         const keyboardPic = document.getElementById("keyboard-pic");
         const keyboardPicMobile = document.getElementById("keyboard-pic-mobile");
@@ -322,16 +323,6 @@ export default class extends Controller {
             event.preventDefault();
         }
 
-        // don't remember what this does
-        const wait = (cb, time) => {
-            return new Promise((res) => {
-                setTimeout(() => {
-                    cb();
-                    res();
-                }, time);
-            });
-        };
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////// OTHER FUNCTIONS
@@ -454,5 +445,49 @@ export default class extends Controller {
             textNotes.textContent = document.getElementById("load-notes").innerHTML;
             textKeys.textContent = document.getElementById("load-keys").innerHTML;
         }
+
+
+        // playback tracks from what's on the screen
+        playbackButton.addEventListener("click", playbackSong);
+
+        async function playbackSong() {
+            lockScreen = true;
+
+            // get track from screen and put it in an array
+            let trackToPlayback = document.getElementById("text-keys").innerHTML.toLowerCase();
+            let trackArray = trackToPlayback.split(" ");
+
+            // start looping on notes (ugly code)
+            let k = 0;
+            while (k < trackArray.length) {
+                console.log(k);
+                dispatchEvent(new KeyboardEvent("keydown", {key: trackArray[k]}));
+                setTimeout(function () {
+
+                    // stop sound from playing
+                    if (oscillators["note"]) {
+                        oscillators["note"].stop();
+                    }
+                    keydown = false;
+
+                    // put back default picture
+                    keyboardPic.src = url + "/build/images/synth/_d_default.png";
+                    keyboardPicMobile.src = url + "/build/images/synth/_m_default.png";
+                }, 500);
+                await wait(() => {
+                    k++;
+                }, 510);
+            }
+            lockScreen = false;
+        }
+        
+        const wait = (cb, time) => {
+            return new Promise((res) => {
+                setTimeout(() => {
+                    cb();
+                    res();
+                }, time);
+            });
+        };
     }
 }
