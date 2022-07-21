@@ -13,7 +13,7 @@ class TrackFixtures extends Fixture implements DependentFixtureInterface
         [
             'title' => 'Tourner les serviettes',
             'notes' => 'E E E E F# E D D C# E E E E F# E D D C# E E E F# E Eb E B B A G# G# F# E E E E E E F# G# B A',
-            'letters' => 'TODO',
+            'letters' => 'D D D D T D S S Z D D D D T D S S Z D D D T D E D J J H Y Y T D D D D D T Y J H',
             'artist' => 'Patrick Sébastien',
             'picture' => 'serviettes.jpeg',
             'difficulty' => 3,
