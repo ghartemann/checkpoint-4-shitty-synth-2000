@@ -3,19 +3,41 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+    <div data-controller="blur"
+         class="container login-container d-flex align-items-center animate__animated animate__zoomIn">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-6">
+                <div class="card bg-secondary bg-opacity-50 semitransparent pink-shadow text-white">
+                    <img src="{{ asset("build/images/login.jpeg") }}" class="card-img-top" alt="The city">
+                    <div class="card-body">
 
-    <h1>Register</h1>
+                        {% for flash_error in app.flashes('verify_email_error') %}
+                            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                        {% endfor %}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+                        <div class="container">
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-10">
+                                    <h1>Register</h1>
+                                    {{ form_start(registrationForm) }}
+                                    {{ form_row(registrationForm.email) }}
+                                    {{ form_row(registrationForm.nickname) }}
+                                    {{ form_row(registrationForm.plainPassword, {
+                                        label: 'Password'
+                                    }) }}
+                                    <div class="d-flex flex-column align-items-center">
+                                        {{ form_row(registrationForm.agreeTerms) }}
+                                        <button type="submit" class="btn btn-danger">Register</button>
+                                        {{ form_end(registrationForm) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+
 {% endblock %}

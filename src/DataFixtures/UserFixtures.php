@@ -19,7 +19,7 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        // creating one admin user
+        // creating 1 admin user
         $user = new User();
         $hashedPassword = $this->passwordHasher->hashPassword(
             $user,
@@ -33,10 +33,24 @@ class UserFixtures extends Fixture
         $manager->persist($user);
         $this->addReference('user_0', $user);
 
+        // creating 1 known user
+        $user = new User();
+        $hashedPassword = $this->passwordHasher->hashPassword(
+            $user,
+            'toretto'
+        );
+        $user
+            ->setEmail("v.diesel@laposte.net")
+            ->setPassword($hashedPassword)
+            ->setNickname('vin_diesel_69')
+            ->setRoles(['ROLE_SYNTHER']);
+        $manager->persist($user);
+        $this->addReference('user_1', $user);
+
         // creating 10 users
         $faker = Factory::create();
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 2; $i <= 10; $i++) {
             $user = new User();
             $hashedPassword = $this->passwordHasher->hashPassword(
                 $user,
@@ -46,7 +60,6 @@ class UserFixtures extends Fixture
                 ->setEmail($faker->email())
                 ->setPassword($hashedPassword)
                 ->setNickname($faker->unique()->randomElement([
-                    "vin_diesel",
                     "SEND_ME_PICS_OF_YOUR_DOG",
                     "banana",
                     "Danny",

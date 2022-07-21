@@ -313,6 +313,9 @@ export default class extends Controller {
             // stop sound from playing
             if (oscillators["note"]) {
                 oscillators["note"].stop();
+
+                // TODO: this doesn't work unfortunately, will have to look into it later
+                // mainGainNode.gain.setTargetAtTime(0, audioContext.currentTime, 0.015);
             }
 
             // put back default picture
@@ -444,16 +447,16 @@ export default class extends Controller {
             textNotes.textContent = document.getElementById("load-notes").innerHTML;
             textKeys.textContent = document.getElementById("load-keys").innerHTML;
         }
-        
+
         // playback tracks from what's on the screen
         playbackButton.addEventListener("click", playbackSong);
 
         async function playbackSong() {
             lockScreen = true;
 
-            if (textNotes.textContent === "" || textNotes.textContent === "NOTHING TO PLAY") {
-                textNotes.textContent = "NOTHING TO PLAY";
-                textKeys.textContent = "NOTHING TO PLAY";
+            if (textNotes.textContent === "" || textNotes.textContent === "FATAL ERROR: NOTHING TO PLAY") {
+                textNotes.textContent = "FATAL ERROR: NOTHING TO PLAY";
+                textKeys.textContent = "FATAL ERROR: NOTHING TO PLAY";
             } else {
                 // get track from screen and put it in an array
                 let trackToPlayback = document.getElementById("text-keys").innerHTML.toLowerCase();

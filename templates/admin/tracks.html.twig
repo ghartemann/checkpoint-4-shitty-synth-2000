@@ -16,7 +16,7 @@
             </a>
         </div>
 
-        <div class="card bg-primary bg-opacity-25 semitransparent mb-3 text-white">
+        <div class="card bg-secondary bg-opacity-25 semitransparent mb-3 text-white overflow-scroll">
             <div class="row g-0">
                 <div class="card-body">
                     <table class="table">
@@ -37,7 +37,8 @@
                                 <th scope="row">{{ loop.index }}</th>
                                 <th scope="row">{{ track.id }}</th>
                                 <td>
-                                    <a href="{{ path("app_track_show", {'id': track.id}) }}">{{ track.title }}</a>
+                                    <a href="{{ path("app_track_show", {'id': track.id}) }}"
+                                       class="text-cyan">{{ track.title }}</a>
                                 </td>
                                 <td>{{ track.artist }}</td>
                                 <td>{{ track.creator.nickname }} ({{ track.creator.email }})</td>

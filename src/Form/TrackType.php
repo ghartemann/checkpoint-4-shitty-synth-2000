@@ -46,7 +46,7 @@ class TrackType extends AbstractType
                 'label' => 'Youtube video',
                 'required' => false,
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control mb-2',
                     'placeholder' => 'Youtube video URL',
                 ],
             ])
