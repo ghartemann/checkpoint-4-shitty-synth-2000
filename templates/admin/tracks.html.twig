@@ -28,6 +28,7 @@
                             <th scope="col">Artist</th>
                             <th scope="col">Creator</th>
                             <th scope="col">Youtube</th>
+                            <th scope="col">Likes</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -46,6 +47,9 @@
                                     {% else %}
                                         No
                                     {% endif %}
+                                </td>
+                                <td>
+                                    {{ track.favouriters|length }}
                                 </td>
                                 <td>
                                     {{ include('admin/_delete_form.html.twig') }}

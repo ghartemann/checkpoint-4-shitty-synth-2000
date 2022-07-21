@@ -6,6 +6,7 @@ use App\Repository\TrackRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: TrackRepository::class)]
 class Track
@@ -15,21 +16,48 @@ class Track
     #[ORM\Column()]
     private ?int $id = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'The title cannot be longer than {{ limit }} characters',
+    )]
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'The artist\'s name cannot be longer than {{ limit }} characters',
+    )]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $artist = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'The URL cannot be longer than {{ limit }} characters',
+    )]
+    #[Assert\Url(message: 'The url {{ value }} is not a valid url',)]
     #[ORM\Column(length: 255)]
     private ?string $picture = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'You can\'t have more than {{ limit }} characters',
+    )]
     #[ORM\Column(length: 255)]
     private ?string $notes = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Range(
+        notInRangeMessage: 'The difficulty must be between 1 and 3',
+        min: 1,
+        max: 3,
+    )]
     #[ORM\Column]
     private ?int $difficulty = null;
 
+    #[Assert\NotBlank]
     #[ORM\ManyToOne(inversedBy: 'tracks')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $creator = null;
@@ -37,9 +65,19 @@ class Track
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'favorites', cascade: ['persist'])]
     private Collection $favouriters;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'You can\'t have more than {{ limit }} characters',
+    )]
     #[ORM\Column(length: 255)]
     private ?string $letters = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'The URL cannot be longer than {{ limit }} characters',
+    )]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $youtube = null;
 

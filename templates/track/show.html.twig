@@ -48,13 +48,15 @@
         </div>
     </div>
 
-    <div class="container mt-5 pt-5 mb-5">
-        <div class="row">
-            <div class="col-12 d-flex justify-content-center">
-                <div class="youtube-container pink-shadow">
-                    <iframe src="https://www.youtube.com/embed/{{ track.youtube }}" class="youtube-video"></iframe>
+    {% if track.youtube %}
+        <div class="container mt-5 pt-5 mb-5">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <div class="youtube-container pink-shadow">
+                        <iframe src="https://www.youtube.com/embed/{{ track.youtube }}" class="youtube-video"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    {% endif %}
 {% endblock %}
