@@ -38,7 +38,7 @@ class Track
     )]
     #[Assert\Url(message: 'The url {{ value }} is not a valid url',)]
     #[ORM\Column(length: 255)]
-    private ?string $picture = null;
+    private ?string $picture = "https://www.wmhbradio.org/wp-content/uploads/2016/07/music-placeholder.png";
 
     #[Assert\NotBlank]
     #[Assert\Length(

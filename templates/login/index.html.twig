@@ -22,11 +22,13 @@
                                 <div class="col-10">
                                     <form action="{{ path('app_login') }}" method="post">
                                         <label for="username" class="form-label">Email</label>
-                                        <input class="form-control input-pink text-white" type="text" id="username"
+                                        <input class="form-control input-pink text-white semitransparent" type="text"
+                                               id="username"
                                                name="_username"/>
 
                                         <label for="password" class="form-label mt-3">Password</label>
-                                        <input class="form-control input-pink text-white" type="password" id="password"
+                                        <input class="form-control input-pink text-white semitransparent"
+                                               type="password" id="password"
                                                name="_password"/>
 
                                         <input type="hidden" name="_csrf_token"

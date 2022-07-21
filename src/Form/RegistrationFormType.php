@@ -21,12 +21,12 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'attr' => [
-                    'class' => 'form-control mb-3 input-pink text-white',
+                    'class' => 'form-control mb-3 input-pink text-white semitransparent',
                 ],
             ])
             ->add('nickname', TextType::class, [
                 'attr' => [
-                    'class' => 'form-control mb-3 input-pink text-white',
+                    'class' => 'form-control mb-3 input-pink text-white semitransparent',
                 ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
@@ -46,7 +46,7 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'attr' => [
                     'autocomplete' => 'new-password',
-                    'class' => 'form-control mb-3 input-pink text-white',
+                    'class' => 'form-control mb-3 input-pink text-white semitransparent',
                 ],
                 'constraints' => [
                     new NotBlank([

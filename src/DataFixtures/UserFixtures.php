@@ -23,7 +23,7 @@ class UserFixtures extends Fixture
         $user = new User();
         $hashedPassword = $this->passwordHasher->hashPassword(
             $user,
-            'admin'
+            'password'
         );
         $user
             ->setEmail('admin@gmail.com')
@@ -37,7 +37,7 @@ class UserFixtures extends Fixture
         $user = new User();
         $hashedPassword = $this->passwordHasher->hashPassword(
             $user,
-            'toretto'
+            'password'
         );
         $user
             ->setEmail("v.diesel@laposte.net")
@@ -54,7 +54,7 @@ class UserFixtures extends Fixture
             $user = new User();
             $hashedPassword = $this->passwordHasher->hashPassword(
                 $user,
-                '123456'
+                'password'
             );
             $user
                 ->setEmail($faker->email())
@@ -64,11 +64,11 @@ class UserFixtures extends Fixture
                     "banana",
                     "Danny",
                     "Lizzie",
-                    "Sylens",
-                    "fuckjs",
+                    "riddick",
+                    "ihatejs",
                     "Dom",
                     "phat-D",
-                    "helloWorld",
+                    "e.macron",
                 ]))
                 ->setRoles(['ROLE_SYNTHER']);
             $manager->persist($user);
