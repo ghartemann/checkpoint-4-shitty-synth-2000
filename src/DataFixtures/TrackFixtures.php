@@ -62,7 +62,7 @@ class TrackFixtures extends Fixture implements DependentFixtureInterface
             'artist' => null,
             'picture' => 'https://cdns-images.dzcdn.net/images/cover/e620bddf88338269999ff1b8b0381c4a/350x350.jpg',
             'difficulty' => 3,
-            'youtube' => '_z-1fTlSDF0',
+            'youtube' => null,
         ],
     ];
 
@@ -80,10 +80,11 @@ class TrackFixtures extends Fixture implements DependentFixtureInterface
                 ->setPicture($trackName['picture'])
                 ->setDifficulty($trackName['difficulty'])
                 ->setYoutube($trackName['youtube'])
-                ->setCreator($this->getReference('user_' . rand(1, 10)))
-                ->addFavouriter($this->getReference('user_' . rand(0, 1)));
+                ->setCreator($this->getReference('user_' . rand(1, 10)));
+            for ($i = 0; $i <= rand(0, 4); $i++) {
+                $note->addFavouriter($this->getReference('user_' . rand(1, 10)));
+            }
             $manager->persist($note);
-            $i++;
         }
         $manager->flush();
     }

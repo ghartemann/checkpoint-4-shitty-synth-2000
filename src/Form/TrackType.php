@@ -10,6 +10,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class TrackType extends AbstractType
 {
@@ -40,6 +42,14 @@ class TrackType extends AbstractType
                     'placeholder' => 'URL',
                 ],
             ])
+            ->add('youtube', UrlType::class, [
+                'label' => 'Youtube video',
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'Youtube video URL',
+                ],
+            ])
             ->add('notes', TextareaType::class, [
                 'label' => 'Notes*',
                 'required' => true,
@@ -62,6 +72,11 @@ class TrackType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Difficulty level (1-3)',
+                ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Length(['min' => 1]),
+                    new Length(['max' => 3]),
                 ],
             ]);
     }

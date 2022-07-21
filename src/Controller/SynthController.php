@@ -6,6 +6,7 @@ use App\Entity\Track;
 use App\Entity\User;
 use App\Form\TrackType;
 use App\Repository\TrackRepository;
+use App\Service\YoutubeService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,7 +16,10 @@ use Symfony\Component\HttpFoundation\Request;
 class SynthController extends AbstractController
 {
     #[Route('', name: 'index')]
-    public function index(Request $request, TrackRepository $trackRepository): Response
+    public function index(
+        Request         $request,
+        TrackRepository $trackRepository,
+        YoutubeService  $youtubeService): Response
     {
         $tracks = $trackRepository->findAll();
 
@@ -27,6 +31,8 @@ class SynthController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $youtube = $youtubeService->trimYoutube($track);
+            $track->setYoutube($youtube);
             $trackRepository->add($track, true);
             return $this->redirectToRoute('app_track_index');
         }

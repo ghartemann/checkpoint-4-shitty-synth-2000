@@ -461,6 +461,10 @@ export default class extends Controller {
             while (k < trackArray.length) {
                 console.log(k);
                 dispatchEvent(new KeyboardEvent("keydown", {key: trackArray[k]}));
+
+                // TODO: add real values to play in rythm?
+                let randomValue = (Math.random() * 250) + 250;
+                
                 setTimeout(function () {
 
                     // stop sound from playing
@@ -472,10 +476,10 @@ export default class extends Controller {
                     // put back default picture
                     keyboardPic.src = url + "/build/images/synth/_d_default.png";
                     keyboardPicMobile.src = url + "/build/images/synth/_m_default.png";
-                }, 500);
+                }, randomValue);
                 await wait(() => {
                     k++;
-                }, 510);
+                }, randomValue + 50);
             }
         }
 
