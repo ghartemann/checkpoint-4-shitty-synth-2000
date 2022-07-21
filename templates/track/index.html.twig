@@ -14,7 +14,7 @@
                 <div class="col">
                     <a href="{{ path("app_track_show", {'id': track.id}) }}">
                         <div class="card h-100 bg-primary bg-opacity-25 semitransparent text-white">
-                            <img src="{{ asset("build/images/tracks/" ~ track.picture) }}"
+                            <img src="{{ track.picture }}"
                                  class="card-img-top img-ratio"
                                  alt="..."/>
                             <div class="card-body">

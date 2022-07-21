@@ -3,50 +3,49 @@
 {% block title %}[ADMIN] Users - {% endblock %}
 
 {% block body %}
-<div class="container mb-5 d-flex flex-column justify-content-center">
-    <div class="row">
-        <div class="main-title-container col-12 d-flex align-items-center justify-content-center mt-5 pt-5 mb-5">
-            <h1 class="main-title">Users</h1>
-        </div>
-    </div>
-
-    <div class="mb-3">
-        <a href="{{ path("app_admin_index") }}">
-            <button class="btn btn-danger">Back</button>
-        </a>
-    </div>
-
-    <div class="card bg-primary bg-opacity-25 semitransparent mb-3 text-white">
-        <div class="row g-0">
-            <div class="card-body">
-                <table class="table">
-                    <thead>
-                    <tr class="text-white">
-                        <th scope="col">#</th>
-                        <th scope="col">Id</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for user in users %}
-                        <tr class="text-white">
-                            <th scope="row">{{ loop.index }}</th>
-                            <th scope="row">{{ user.id }}</th>
-                            <td>{{ user.email }}</td>
-                            <td>
-                                {% for role in user.roles %}
-                                    {{ role }}{% if not loop.last %}, {% endif %}
-                                {% endfor %}
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+    <div class="container mb-5 d-flex flex-column justify-content-center">
+        <div class="row">
+            <div class="main-title-container col-12 d-flex align-items-center justify-content-center mt-5 pt-5 mb-5">
+                <h1 class="main-title">Users</h1>
             </div>
+        </div>
 
+        <div class="mb-3">
+            <a href="{{ path("app_admin_index") }}">
+                <button class="btn btn-danger">Back</button>
+            </a>
+        </div>
+
+        <div class="card bg-primary bg-opacity-25 semitransparent mb-3 text-white">
+            <div class="row g-0">
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                        <tr class="text-white">
+                            <th scope="col">#</th>
+                            <th scope="col">Id</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Role</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users %}
+                            <tr class="text-white">
+                                <th scope="row">{{ loop.index }}</th>
+                                <th scope="row">{{ user.id }}</th>
+                                <td>{{ user.email }}</td>
+                                <td>
+                                    {% for role in user.roles %}
+                                        {{ role }}{% if not loop.last %}, {% endif %}
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
         </div>
     </div>
-    <div>
-
-        {% endblock %}
+{% endblock %}

@@ -88,10 +88,11 @@ body {
 }
 
 .btn-danger:hover {
-  background-color: #69eeff !important;
+  color: #FFFFFF !important;
+  background-color: #81f0ff !important;
   box-shadow: 0 0 15px #fff, 0 0 20px #00e9ff, 0 0 30px #00e9ff,
   0 0 40px #00e9ff, 0 0 55px #00e9ff, 0 0 75px #00e9ff;
-
+  border: 1px solid #81f0ff !important;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -356,6 +357,16 @@ body {
 .login-button:hover {
   text-shadow: 0 0 15px #fff, 0 0 20px #00e9ff, 0 0 30px #00e9ff,
   0 0 40px #00e9ff, 0 0 55px #00e9ff, 0 0 75px #00e9ff;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////// ADMIN
+
+.delete-btn-admin {
+  border: none;
+  background-color: rgba(255, 0, 0, 0);
+  color: white;
 }
 
 
