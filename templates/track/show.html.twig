@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="main-title-container col-12 d-flex align-items-center justify-content-center">
-                <h1 class="main-title">TRACK DETAILS</h1>
+                <h1 class="main-title user-select-none">TRACK DETAILS</h1>
             </div>
         </div>
 
@@ -34,7 +34,7 @@
                                 </div>
                             </div>
                             <p class="card-text">
-                                <small class="text-white">Creator: {{ track.creator.email }}</small>
+                                <small class="text-white">Creator: {{ track.creator.nickname }}</small>
                             </p>
                             <h4 class="card-title mt-4">Difficulty</h4>
                             <p class="card-text">{{ track.difficulty }}/3</p>

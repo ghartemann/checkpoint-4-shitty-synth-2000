@@ -23,11 +23,12 @@ class UserFixtures extends Fixture
         $user = new User();
         $hashedPassword = $this->passwordHasher->hashPassword(
             $user,
-            'adminpassword'
+            'admin'
         );
         $user
-            ->setEmail('g.hartemann@gmail.com')
+            ->setEmail('admin@gmail.com')
             ->setPassword($hashedPassword)
+            ->setNickname("NK_ULTRA")
             ->setRoles(['ROLE_ADMIN']);
         $manager->persist($user);
         $this->addReference('user_0', $user);
@@ -44,6 +45,18 @@ class UserFixtures extends Fixture
             $user
                 ->setEmail($faker->email())
                 ->setPassword($hashedPassword)
+                ->setNickname($faker->unique()->randomElement([
+                    "vin_diesel",
+                    "SEND_ME_PICS_OF_YOUR_DOG",
+                    "banana",
+                    "Danny",
+                    "Lizzie",
+                    "Sylens",
+                    "fuckjs",
+                    "Dom",
+                    "phat-D",
+                    "helloWorld",
+                ]))
                 ->setRoles(['ROLE_SYNTHER']);
             $manager->persist($user);
             $this->addReference('user_' . $i, $user);

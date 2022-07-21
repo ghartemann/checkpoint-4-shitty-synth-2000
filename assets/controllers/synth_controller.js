@@ -418,12 +418,12 @@ export default class extends Controller {
                 for (const element of tracksToLoad) {
                     if ("track_" + loadSelector.value === element.id) {
                         element.classList.remove("d-none");
-                        element.children[3].id = "load-notes";
-                        element.children[5].id = "load-keys";
+                        element.children[4].id = "load-notes";
+                        element.children[6].id = "load-keys";
                     } else {
                         element.classList.add("d-none");
-                        element.children[3].removeAttribute('id');
-                        element.children[5].removeAttribute('id');
+                        element.children[4].removeAttribute('id');
+                        element.children[6].removeAttribute('id');
                     }
                 }
             } else {
@@ -444,42 +444,46 @@ export default class extends Controller {
             textNotes.textContent = document.getElementById("load-notes").innerHTML;
             textKeys.textContent = document.getElementById("load-keys").innerHTML;
         }
-
-
+        
         // playback tracks from what's on the screen
         playbackButton.addEventListener("click", playbackSong);
 
         async function playbackSong() {
             lockScreen = true;
 
-            // get track from screen and put it in an array
-            let trackToPlayback = document.getElementById("text-keys").innerHTML.toLowerCase();
-            let trackArray = trackToPlayback.split(" ");
+            if (textNotes.textContent === "" || textNotes.textContent === "NOTHING TO PLAY") {
+                textNotes.textContent = "NOTHING TO PLAY";
+                textKeys.textContent = "NOTHING TO PLAY";
+            } else {
+                // get track from screen and put it in an array
+                let trackToPlayback = document.getElementById("text-keys").innerHTML.toLowerCase();
+                let trackArray = trackToPlayback.split(" ");
 
-            // start looping on notes (ugly code)
-            let k = 0;
-            while (k < trackArray.length) {
-                console.log(k);
-                dispatchEvent(new KeyboardEvent("keydown", {key: trackArray[k]}));
+                // start looping on notes (ugly code)
+                let k = 0;
+                while (k < trackArray.length) {
+                    console.log(k);
+                    dispatchEvent(new KeyboardEvent("keydown", {key: trackArray[k]}));
 
-                // TODO: add real values to play in rythm?
-                let randomValue = (Math.random() * 250) + 250;
-                
-                setTimeout(function () {
+                    // TODO: add real values to play in rythm?
+                    let randomValue = (Math.random() * 250) + 250;
 
-                    // stop sound from playing
-                    if (oscillators["note"]) {
-                        oscillators["note"].stop();
-                    }
-                    keydown = false;
+                    setTimeout(function () {
 
-                    // put back default picture
-                    keyboardPic.src = url + "/build/images/synth/_d_default.png";
-                    keyboardPicMobile.src = url + "/build/images/synth/_m_default.png";
-                }, randomValue);
-                await wait(() => {
-                    k++;
-                }, randomValue + 50);
+                        // stop sound from playing
+                        if (oscillators["note"]) {
+                            oscillators["note"].stop();
+                        }
+                        keydown = false;
+
+                        // put back default picture
+                        keyboardPic.src = url + "/build/images/synth/_d_default.png";
+                        keyboardPicMobile.src = url + "/build/images/synth/_m_default.png";
+                    }, randomValue);
+                    await wait(() => {
+                        k++;
+                    }, randomValue + 50);
+                }
             }
         }
 

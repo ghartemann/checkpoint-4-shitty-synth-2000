@@ -20,6 +20,7 @@
                 </select>
                 {% for track in tracks %}
                     <div id="track_{{ track.id }}" class="tracks-to-load d-none mt-4">
+                        <p class="card-text">Creator: {{ track.creator.email }}</p>
                         <h5 class="card-title">Difficulty:</h5>
                         <p class="card-text">{{ track.difficulty }}/3</p>
                         <h5 class="card-title">Notes:</h5>
