@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tracks - {% endblock %}
+{% block title %}{{ track.title }} - {% endblock %}
 
 {% block body %}
     <div class="container">
@@ -19,7 +19,7 @@
                     <a href="{{ path("app_track_edit", {'id': track.id}) }}">
                         <button class="btn btn-danger">Edit</button>
                     </a>
-                
+
                     {{ include('track/_delete_form.html.twig') }}
                 {% endif %}
             </div>
