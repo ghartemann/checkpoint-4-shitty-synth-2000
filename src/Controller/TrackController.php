@@ -51,7 +51,7 @@ class TrackController extends AbstractController
     /**
      * @throws Exception
      */
-    #[IsGranted('ROLE_ADMIN')]
+    #[IsGranted('ROLE_ADMIN, ROLE_SYNTHER')]
     #[Route('/{id}/delete', name: 'delete', methods: ['POST'])]
     public function delete(Request $request, Track $track, TrackRepository $trackRepository): Response
     {

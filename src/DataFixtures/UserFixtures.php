@@ -26,7 +26,7 @@ class UserFixtures extends Fixture
             'password'
         );
         $user
-            ->setEmail('admin@gmail.com')
+            ->setEmail('admin@admin.com')
             ->setPassword($hashedPassword)
             ->setNickname("NK_ULTRA")
             ->setRoles(['ROLE_ADMIN']);
