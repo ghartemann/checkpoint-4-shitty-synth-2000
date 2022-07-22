@@ -13,8 +13,6 @@ class NKULTRAController extends AbstractController
     #[Route('', name: 'index')]
     public function index(): Response
     {
-        return $this->render('nkultra/index.html.twig', [
-            'controller_name' => 'NKULTRAController',
-        ]);
+        return $this->render('nkultra/index.html.twig');
     }
 }
