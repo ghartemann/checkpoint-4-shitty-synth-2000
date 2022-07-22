@@ -23,16 +23,17 @@ class SynthController extends AbstractController
     {
         $tracks = $trackRepository->findAll();
 
-        /** @var User $user */
-        $user = $this->getUser();
         $track = new Track();
         $form = $this->createForm(TrackType::class, $track);
-        $track->setCreator($user);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $youtube = $youtubeService->trimYoutube($track);
             $track->setYoutube($youtube);
+            /** @var User $user */
+            $user = $this->getUser();
+            $track->setCreator($user);
             $trackRepository->add($track, true);
             return $this->redirectToRoute('app_track_index');
         }

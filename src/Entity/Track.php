@@ -57,7 +57,6 @@ class Track
     #[ORM\Column]
     private ?int $difficulty = null;
 
-    #[Assert\NotBlank]
     #[ORM\ManyToOne(inversedBy: 'tracks')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $creator = null;
@@ -73,7 +72,6 @@ class Track
     #[ORM\Column(length: 255)]
     private ?string $letters = null;
 
-    #[Assert\NotBlank]
     #[Assert\Length(
         max: 255,
         maxMessage: 'The URL cannot be longer than {{ limit }} characters',

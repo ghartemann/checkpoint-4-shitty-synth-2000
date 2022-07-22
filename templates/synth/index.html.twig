@@ -26,7 +26,11 @@
                         <div id="screen-options" class="d-flex justify-content-between d-none m-0 user-select-none">
                             <div>
                                 <a id="read-only" class="d-none">RO /!\</a>
-                                <a data-bs-toggle="modal" data-bs-target="#saveModal" id="save-button">SAVE</a>
+                                {% if not is_granted('ROLE_USER') %}
+                                    <a onclick="alert('You must be logged in to use this feature!');">SAVE</a>
+                                {% else %}
+                                    <a data-bs-toggle="modal" data-bs-target="#saveModal" id="save-button">SAVE</a>
+                                {% endif %}
                                 |
                                 <a data-bs-toggle="modal" data-bs-target="#loadModal">LOAD</a> |
                                 <a id="clear-screen">CLEAR</a>
