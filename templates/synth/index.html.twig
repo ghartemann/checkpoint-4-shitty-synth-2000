@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div data-controller="synth" class="container-fluid p-0">
+    <div class="container-fluid p-0">
         <div class="row">
             <div class="title-container"></div>
         </div>
@@ -70,4 +70,9 @@
 
     {{ include('_components/_saveform.html.twig') }}
     {{ include('_components/_loadform.html.twig') }}
+
+    {% block javascripts %}
+        {{ parent() }}
+        {{ encore_entry_script_tags('synth') }}
+    {% endblock %}
 {% endblock %}
