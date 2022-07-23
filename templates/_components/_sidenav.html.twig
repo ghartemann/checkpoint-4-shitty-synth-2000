@@ -1,50 +1,65 @@
-<div id="mySidenav" class="sidenav bg-secondary bg-opacity-25 semitransparent pink-shadow overflow-scroll">
-    <a id="closeBtn" href="#" class="close">×</a>
-    <ul>
-        <li class="mb-5">
-            <a href="{{ path("app_home") }}">Home</a>
-        </li>
-        <li>
-            {% if not is_granted('ROLE_USER') %}
-                <a href="{{ path("app_login") }}">Login</a>
-            {% else %}
-                <a href="{{ path("app_logout") }}">Logout</a>
+<div id="mySidenav"
+     class="sidenav bg-secondary bg-opacity-25 semitransparent pink-shadow overflow-scroll d-flex flex-column justify-content-between">
+    <div>
+        <a id="closeBtn" href="#" class="close">×</a>
+        <ul>
+            <li class="mb-5">
+                <a href="{{ path("app_home") }}">Home</a>
+            </li>
+            <li>
+                {% if not is_granted('ROLE_USER') %}
+                    <a href="{{ path("app_login") }}">Login</a>
+                {% else %}
+                    <a href="{{ path("app_logout") }}">Logout</a>
+                {% endif %}
+            </li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li>
+                    <a href="{{ path("app_admin_index") }}">Admin</a>
+                </li>
+            {% elseif is_granted('ROLE_SYNTHER') %}
+                <li>
+                    <a href="{{ path("app_user_profile_index") }}">My profile</a>
+                </li>
             {% endif %}
-        </li>
-        {% if is_granted('ROLE_ADMIN') %}
-            <li>
-                <a href="{{ path("app_admin_index") }}">Admin</a>
+            <li class="mt-5">
+                <a href="{{ path("app_synth_index") }}">Synth</a>
             </li>
-        {% elseif is_granted('ROLE_SYNTHER') %}
-            <li>
-                <a href="{{ path("app_user_profile_index") }}">My profile</a>
+            <li class="mb-5">
+                <a href="{{ path("app_track_index") }}">Tracklist</a>
             </li>
-        {% endif %}
-        <li class="mt-5">
-            <a href="{{ path("app_synth_index") }}">Synth</a>
-        </li>
-        <li class="mb-5">
-            <a href="{{ path("app_track_index") }}">Tracklist</a>
-        </li>
-        <li>
-            <a href="{{ path("app_nkultra_index") }}">NK ULTRA (who?)</a>
-        </li>
-        <li>
-            <a href="" data-bs-toggle="modal" data-bs-target="#infoModal">ReadMe</a>
-        </li>
-        <li class="mb-5">
-            <a href="" data-bs-toggle="modal" data-bs-target="#notesModal">Notes table</a>
-        </li>
-        <li class="mb-5">
-            <a href="https://github.com/ghartemann/checkpoint-4-shitty-synth-2000" target="_blank">$this->getGithub</a>
-        </li>
-        <li>
-            <a href="https://ghartemann.fr/" target="_blank">ghartemann.fr</a>
-        </li>
-        <li>
-            <a href="https://www.linkedin.com/in/ghartemann/" target="_blank">LinkedIn</a>
-        </li>
-    </ul>
+            <li>
+                <a href="{{ path("app_nkultra_index") }}">NK ULTRA (who?)</a>
+            </li>
+            <li>
+                <a href="" data-bs-toggle="modal" data-bs-target="#infoModal">ReadMe</a>
+            </li>
+            <li class="mb-5">
+                <a href="" data-bs-toggle="modal" data-bs-target="#notesModal">Notes table</a>
+            </li>
+            <li>
+                <a href="" data-bs-toggle="modal" data-bs-target="#roadmapModal">Roadmap</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="d-flex gap-4 px-4">
+        <a href="https://github.com/ghartemann/checkpoint-4-shitty-synth-2000" target="_blank" class="px-0">
+            <span class="sidenav-social">
+                <i class="fa-brands fa-github"></i>
+            </span>
+        </a>
+        <a href="https://ghartemann.fr/" target="_blank" class="px-0">
+            <span class="sidenav-social">
+                <i class="fa-solid fa-display"></i>
+            </span>
+        </a>
+        <a href="https://www.linkedin.com/in/ghartemann/" target="_blank" class="px-0">
+            <span class="sidenav-social">
+                <i class="fa-brands fa-linkedin"></i>
+            </span>
+        </a>
+    </div>
 </div>
 
 <a href="#" id="openBtn">
@@ -57,3 +72,4 @@
 
 {{ include('_components/_sidenav_readme.html.twig') }}
 {{ include('_components/_sidenav_notes_info.html.twig') }}
+{{ include('_components/_sidenav_roadmap.html.twig') }}
