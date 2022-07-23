@@ -4,7 +4,7 @@ This website features a pretty bare synth coded with JavaScript and Web Audio AP
 
 <img width="1675" alt="Capture d’écran 2022-07-23 à 23 42 31" src="https://user-images.githubusercontent.com/36921636/180623751-7b7a1a81-8a17-4236-80cc-8170d23b8a08.png">
 
-You can try it at shitty-synth.ghartemann.fr
+You can try it at [shitty-synth.ghartemann.fr](shitty-synth.ghartemann.fr).
 
 It isn't a good synth nor does it work without issues. The main ones being that *click* sound happening at the end of each tone or the inability to play multiple tones at once or to switch from one key to another efficiently.
 
